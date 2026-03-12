@@ -1,0 +1,429 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh6300\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="zh">\
+<head>\
+  <meta charset="UTF-8">\
+  <title>\uc0\u21340 \u26195 \u32418 \u39278 \u39135 \u23567 \u21161 \u25163 </title>\
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+  <style>\
+    *\{box-sizing:border-box;margin:0;padding:0;\}\
+    body\{font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f5f0;color:#333;\}\
+    .header\{background:linear-gradient(135deg,#2d6a4f,#40916c);color:#fff;padding:18px;text-align:center;\}\
+    .header h1\{font-size:20px;margin-bottom:4px;\}\
+    .header p\{font-size:12px;opacity:.9;\}\
+    .badges\{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:8px;\}\
+    .badge\{font-size:11px;padding:3px 9px;border-radius:14px;background:rgba(255,255,255,.2);\}\
+    .tabs\{display:flex;overflow-x:auto;background:#fff;border-bottom:2px solid #e8f5e9;\}\
+    .tab\{flex:1;min-width:80px;padding:10px 6px;text-align:center;font-size:13px;border:none;background:none;cursor:pointer;color:#666;\}\
+    .tab.active\{color:#2d6a4f;border-bottom:3px solid #2d6a4f;font-weight:bold;\}\
+    .content\{padding:12px 14px;\}\
+    .hidden\{display:none;\}\
+\
+    .search-box\{padding:10px 14px;background:#fff;border-bottom:1px solid #eee;\}\
+    .search-input\{width:100%;padding:9px 12px;border:1.5px solid #c8e6c9;border-radius:22px;font-size:14px;\}\
+    .search-input:focus\{outline:none;border-color:#40916c;\}\
+\
+    .legend\{display:flex;gap:10px;margin:8px 0 10px;\}\
+    .legend-item\{font-size:11px;color:#555;display:flex;align-items:center;gap:4px;\}\
+    .dot\{width:9px;height:9px;border-radius:50%;\}\
+    .dot-ok\{background:#40916c;\}\
+    .dot-warn\{background:#f59e0b;\}\
+    .dot-no\{background:#ef4444;\}\
+\
+    .chip-row\{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;\}\
+    .chip\{border:none;padding:4px 10px;border-radius:18px;font-size:11px;cursor:pointer;background:#e8f5e9;color:#2d6a4f;\}\
+    .chip.active\{background:#2d6a4f;color:#fff;\}\
+\
+    .food-list\{display:flex;flex-direction:column;gap:8px;\}\
+    .card\{background:#fff;border-radius:10px;padding:10px 12px;box-shadow:0 1px 4px rgba(0,0,0,.06);border-left:4px solid #ccc;\}\
+    .card.ok\{border-left-color:#40916c;\}\
+    .card.warn\{border-left-color:#f59e0b;\}\
+    .card.no\{border-left-color:#ef4444;\}\
+    .card-title\{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;\}\
+    .name\{font-size:15px;font-weight:bold;\}\
+    .eng\{font-size:11px;color:#888;margin-left:5px;\}\
+    .status\{font-size:18px;\}\
+    .tcm\{font-size:12px;color:#5a8a6a;background:#f0faf4;padding:3px 7px;border-radius:9px;display:inline-block;margin-bottom:4px;\}\
+    .detail\{font-size:12px;color:#444;line-height:1.6;\}\
+    .tags\{margin-top:4px;display:flex;gap:4px;flex-wrap:wrap;\}\
+    .tag\{font-size:11px;padding:2px 7px;border-radius:10px;\}\
+    .tag-diabetes\{background:#fef3c7;color:#92400e;\}\
+    .tag-liver\{background:#d1fae5;color:#065f46;\}\
+    .tag-kidney\{background:#dbeafe;color:#1e40af;\}\
+    .tag-lung\{background:#f3e8ff;color:#5b21b6;\}\
+    .note\{font-size:11px;color:#78350f;background:#fffbeb;border:1px solid #fcd34d;border-radius:6px;padding:5px 8px;margin-top:5px;\}\
+\
+    .section-title\{font-size:13px;color:#666;margin:6px 0 6px;font-weight:600;\}\
+    .pill-row\{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;\}\
+    .pill\{padding:6px 10px;border-radius:16px;border:1px solid #cbd5e1;font-size:12px;cursor:pointer;background:#fff;color:#475569;\}\
+    .pill.active\{background:#2d6a4f;color:#fff;border-color:#2d6a4f;\}\
+\
+    .day-tabs\{display:flex;gap:4px;overflow-x:auto;margin-bottom:10px;\}\
+    .day-btn\{flex-shrink:0;padding:7px 12px;border-radius:18px;border:1px solid #cbd5e1;background:#fff;font-size:12px;cursor:pointer;color:#475569;\}\
+    .day-btn.active\{background:#2d6a4f;color:#fff;border-color:#2d6a4f;\}\
+\
+    .meal-card\{background:#fff;border-radius:10px;padding:10px 12px;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:8px;\}\
+    .meal-head\{font-size:13px;font-weight:bold;color:#2d6a4f;margin-bottom:4px;\}\
+    .meal-line\{font-size:12px;color:#333;border-top:1px dashed #e5e7eb;padding:3px 0;line-height:1.5;\}\
+\
+    .forbid-card\{background:#fff;border-radius:10px;padding:12px 12px;box-shadow:0 1px 4px rgba(0,0,0,.05);margin-bottom:10px;border-left:4px solid #ef4444;\}\
+    .forbid-title\{font-size:14px;color:#b91c1c;font-weight:bold;margin-bottom:6px;\}\
+    .forbid-tags\{display:flex;flex-wrap:wrap;gap:6px;\}\
+    .f-tag\{background:#fee2e2;color:#991b1b;font-size:12px;padding:4px 9px;border-radius:16px;\}\
+    .limit-card\{background:#fff;border-radius:10px;padding:10px 12px;box-shadow:0 1px 4px rgba(0,0,0,.05);border-left:4px solid #f59e0b;\}\
+    .limit-title\{font-size:14px;color:#92400e;font-weight:bold;margin-bottom:4px;\}\
+    .limit-line\{font-size:12px;color:#444;border-top:1px solid #fef3c7;padding:4px 0;\}\
+\
+    .tip-box\{background:#f0fdf4;border-radius:10px;padding:9px 10px;border:1px solid #bbf7d0;font-size:12px;color:#166534;margin-top:8px;\}\
+  </style>\
+</head>\
+<body>\
+  <div class="header">\
+    <h1>\uc0\u21340 \u26195 \u32418 \u39278 \u39135 \u23567 \u21161 \u25163 </h1>\
+    <p>\uc0\u25511 \u34880 \u31958  \'b7 \u25252 \u33026 \u32938 \u32925  \'b7 \u25252 \u32958 \u32467 \u30707  \'b7 \u28070 \u32954 \u32467 \u33410 </p>\
+    <div class="badges">\
+      <span class="badge">\uc0\u55358 \u56952  \u39044 \u38450 \u31958 \u23615 \u30149 </span>\
+      <span class="badge">\uc0\u55358 \u57024  \u25252 \u32925 \u38477 \u33026 </span>\
+      <span class="badge">\uc0\u55357 \u56487  \u25252 \u32958 \u38450 \u32467 \u30707 </span>\
+      <span class="badge">\uc0\u55358 \u57025  \u28070 \u32954 \u32467 \u33410 </span>\
+    </div>\
+  </div>\
+\
+  <div class="tabs">\
+    <button class="tab active" onclick="showTab('food')" id="tab-food">\uc0\u55358 \u56684  \u39135 \u26448 \u26597 \u35810 </button>\
+    <button class="tab" onclick="showTab('menu')" id="tab-menu">\uc0\u55357 \u56517  \u19968 \u21608 \u33756 \u35889 </button>\
+    <button class="tab" onclick="showTab('forbid')" id="tab-forbid">\uc0\u55357 \u57003  \u31105 \u39135 \u28165 \u21333 </button>\
+  </div>\
+\
+  <!-- \uc0\u39135 \u26448 \u26597 \u35810  -->\
+  <div id="page-food">\
+    <div class="search-box">\
+      <input class="search-input" id="search" placeholder="\uc0\u25628 \u32034 \u39135 \u26448 \u65292 \u20363 \u22914 \u65306 \u33760 \u33756 \u12289 \u23567 \u30333 \u33756 \u12289 \u33510 \u29916 \'85" oninput="renderFoods()">\
+    </div>\
+    <div class="content">\
+      <div class="legend">\
+        <div class="legend-item"><span class="dot dot-ok"></span>\uc0\u25512 \u33616 \u22810 \u21507 </div>\
+        <div class="legend-item"><span class="dot dot-warn"></span>\uc0\u23569 \u37327 \u21363 \u21487 </div>\
+        <div class="legend-item"><span class="dot dot-no"></span>\uc0\u24314 \u35758 \u36991 \u20813 </div>\
+      </div>\
+\
+      <div class="chip-row" id="cat-row"></div>\
+      <div class="food-list" id="food-list"></div>\
+    </div>\
+  </div>\
+\
+  <!-- \uc0\u19968 \u21608 \u33756 \u35889  -->\
+  <div id="page-menu" class="hidden">\
+    <div class="content">\
+      <div class="section-title">\uc0\u26412 \u21608 \u20027 \u39064 \u65306 \u28165 \u28129 \u25252 \u32925  + \u25511 \u31958  + \u25252 \u32958 </div>\
+      <div class="tip-box">\
+        \uc0\u24314 \u35758 \u20808 \u29992 \u36825 \u19968 \u21608 \u20570 \u22522 \u30784 \u35843 \u25972 \u65306 <br>\
+        \'95 \uc0\u27599 \u39184 \u26377 \u31895 \u31918 \u65288 \u29141 \u40614 /\u31961 \u31859 /\u23567 \u31859 \u20854 \u20013 \u19968 \u31181 \u65289 <br>\
+        \'95 \uc0\u27599 \u22825 \u33267 \u23569 \u19968 \u39184 \u26377 \u40060 \u25110 \u35910 \u33104 <br>\
+        \'95 \uc0\u27599 \u22825  1500\'961800ml \u28201 \u27700 \
+      </div>\
+\
+      <div class="day-tabs" id="day-tabs"></div>\
+      <div id="meal-box"></div>\
+    </div>\
+  </div>\
+\
+  <!-- \uc0\u31105 \u39135 \u28165 \u21333  -->\
+  <div id="page-forbid" class="hidden">\
+    <div class="content">\
+      <div class="forbid-card">\
+        <div class="forbid-title">\uc0\u10060  \u23436 \u20840 \u19981 \u33021 \u21507 \u65288 \u20026 \u32925 \u12289 \u32958 \u12289 \u34880 \u31958 \u22909 \u65289 </div>\
+        <div class="forbid-tags">\
+          <span class="f-tag">\uc0\u22902 \u33590  / \u29645 \u29664 </span>\
+          <span class="f-tag">\uc0\u27773 \u27700  / \u26524 \u27713 \u39278 \u26009 </span>\
+          <span class="f-tag">\uc0\u34507 \u31957  / \u39292 \u24178  / \u31958 \u26524 </span>\
+          <span class="f-tag">\uc0\u27833 \u26465  / \u28856 \u40481  / \u34223 \u26465 </span>\
+          <span class="f-tag">\uc0\u39321 \u32928  / \u33098 \u32905  / \u21688 \u40060 </span>\
+          <span class="f-tag">\uc0\u29482 \u32925  / \u40481 \u32925  / \u20869 \u33039 </span>\
+          <span class="f-tag">\uc0\u36771 \u28779 \u38149  / \u28903 \u28900 </span>\
+          <span class="f-tag">\uc0\u21860 \u37202  / \u30333 \u37202  / \u32418 \u37202 </span>\
+          <span class="f-tag">\uc0\u20912 \u28103 \u28107 </span>\
+          <span class="f-tag">\uc0\u27060 \u33714 \u65288 \u31958 +\u28909 \u37327 \u39640 \u65289 </span>\
+        </div>\
+      </div>\
+\
+      <div class="limit-card">\
+        <div class="limit-title">\uc0\u9888 \u65039  \u38656 \u35201 \u25511 \u21046 \u20998 \u37327 </div>\
+        <div class="limit-line">\uc0\u55356 \u57178  \u30333 \u31859 \u39277 \u65306 \u27599 \u39184 \u26368 \u22810 \u21322 \u30871 \u65292 \u24517 \u39035 \u28151 \u31961 \u31859 \u19968 \u36215 \u29038 </div>\
+        <div class="limit-line">\uc0\u55356 \u57219  \u21335 \u29916 \u65306 \u19968 \u27425 \u26368 \u22810  100g\u65292 \u35201 \u37197 \u34507 \u30333 \u36136 \u65288 \u40060 /\u34507 /\u35910 \u33104 \u65289 \u19968 \u36215 \u21507 </div>\
+        <div class="limit-line">\uc0\u55356 \u57149  \u29980 \u29577 \u31859 \u65306 \u19968 \u27425 \u26368 \u22810 \u21322 \u26681 </div>\
+        <div class="limit-line">\uc0\u55358 \u56661  \u32993 \u33821 \u21340 \u65306 \u29087 \u28818 \u37327 \u19981 \u35201 \u22826 \u22810 </div>\
+        <div class="limit-line">\uc0\u55358 \u57048  \u33457 \u29983 \u65306 \u19968 \u27425 \u26368 \u22810  10 \u31890 \u65288 \u27748 \u37324 \u21917 \u21069 \u25735 \u27833 \u65289 </div>\
+        <div class="limit-line">\uc0\u9749  \u33590 /\u21654 \u21857 \u65306 \u19981 \u35201 \u37197 \u39184 \u21917 \u65292 \u39277 \u21518  1 \u23567 \u26102 \u20877 \u21917 </div>\
+        <div class="limit-line">\uc0\u55356 \u57159  \u33620 \u26525 \u12289 \u33889 \u33796 \u12289 \u33426 \u26524 \u65306 \u23569 \u21507 \u65292 \u24403 \u25104 \u20598 \u23572 \u23581 \u19968 \u21475 </div>\
+        <div class="limit-line">\uc0\u55356 \u57178  \u30333 \u31909 \u65306 GI \u24456 \u39640 \u65292 \u19981 \u24314 \u35758 \u24120 \u21917 \u65292 \u25913 \u25104 \u26434 \u31918 \u31909 </div>\
+      </div>\
+\
+      <div class="tip-box">\
+        \uc0\u27599 \u22825 \u23567 \u30446 \u26631 \u65306 <br>\
+        \'95 \uc0\u21917 \u22815 \u28201 \u27700  1500\'961800ml<br>\
+        \'95 \uc0\u34092 \u33756 \u37327  \u8805  \u20027 \u39135 \u37327 <br>\
+        \'95 \uc0\u27599 \u22825 \u19981 \u21507 \u20219 \u20309 \u29980 \u39135  / \u27833 \u28856  / \u37202 \u31934 \
+      </div>\
+    </div>\
+  </div>\
+\
+<script>\
+  // ===== \uc0\u25968 \u25454 \u65306 \u39135 \u26448  =====\
+  const foods = [\
+    // \uc0\u34092 \u33756 \
+    \{name:"\uc0\u23567 \u30333 \u33756 ",eng:"Bok Choy",cat:"\u34092 \u33756 ",status:"ok",\
+     tcm:"\uc0\u24615 \u20937 \'b7\u29976 \'b7\u24402 \u32954 \u12289 \u32963 \u32463 ",benefit:"\u28165 \u28909 \u19979 \u28779 \u65292 \u28070 \u32928 \u36890 \u20415 \u65292 \u21547 \u38041 \u21644 \u32500 C\u65292 \u36866 \u21512 \u22825 \u22825 \u21507 \u12290 ",\
+     tags:["liver","lung"],tip:"\uc0\u28165 \u28818 \u25110 \u27718 \u28907 \u37117 \u21487 \u20197 \u65292 \u23569 \u27833 \u23569 \u30416 \u12290 "\},\
+    \{name:"\uc0\u33756 \u24515 ",eng:"Chye Sim",cat:"\u34092 \u33756 ",status:"ok",\
+     tcm:"\uc0\u24615 \u20937 \'b7\u29976 \'b7\u24402 \u32925 \u12289 \u33086 \u32463 ",benefit:"\u28165 \u28909 \u35299 \u27602 \u65292 \u25252 \u32925 \u65292 \u21547 \u21494 \u37240 \u21644 \u32420 \u32500 \u65292 \u23545 \u33026 \u32938 \u32925 \u26377 \u21033 \u12290 ",\
+     tags:["liver"],tip:"\uc0\u33948 \u33993 \u22823 \u28779 \u24555 \u28818 \u26368 \u31616 \u21333 \u12290 "\},\
+    \{name:"\uc0\u33445 \u34013 ",eng:"Kailan",cat:"\u34092 \u33756 ",status:"ok",\
+     tcm:"\uc0\u24615 \u20937 \'b7\u29976 \u33510 \'b7\u24402 \u32954 \u12289 \u32963 \u32463 ",benefit:"\u28165 \u28909 \u35299 \u27602 \u65292 \u21547 \u33203 \u39135 \u32420 \u32500 \u21644 \u32500 C\u65292 \u38477 \u33026 \u25252 \u34880 \u31649 \u12290 ",\
+     tags:["liver","lung"],tip:"\uc0\u32769 \u26775 \u21066 \u30382 \u20999 \u29255 \u65292 \u20250 \u26356 \u23273 \u12290 "\},\
+    \{name:"\uc0\u33760 \u33756 ",eng:"Spinach",cat:"\u34092 \u33756 ",status:"warn",\
+     tcm:"\uc0\u24615 \u20937 \'b7\u29976 \'b7\u24402 \u32925 \u12289 \u32963 \u32463 ",benefit:"\u34917 \u38081 \u12289 \u36890 \u20415 \u65292 \u20294 \u33609 \u37240 \u39640 \u65292 \u32958 \u32467 \u30707 \u35201 \u27880 \u24847 \u12290 ",\
+     tags:["liver","kidney"],tip:"\uc0\u24517 \u39035 \u20808 \u28975 \u27700  30 \u31186 \u20877 \u28818 \u25110 \u20937 \u25292 \u65292 \u20943 \u23569 \u33609 \u37240 \u12290 "\},\
+    \{name:"\uc0\u31354 \u24515 \u33756 ",eng:"Kangkong",cat:"\u34092 \u33756 ",status:"ok",\
+     tcm:"\uc0\u24615 \u23506 \'b7\u29976 \'b7\u24402 \u32928 \u12289 \u32963 \u32463 ",benefit:"\u28165 \u28909 \u21033 \u23615 \u65292 \u38477 \u33026 \u65292 \u36866 \u21512 \u22799 \u22825 \u21507 \u12290 ",\
+     tags:["liver","kidney"],tip:"\uc0\u23481 \u26131 \u20986 \u27700 \u65292 \u24555 \u36895 \u32763 \u28818 \u21363 \u21487 \u12290 "\},\
+    \{name:"\uc0\u35199 \u20848 \u33457 ",eng:"Broccoli",cat:"\u34092 \u33756 ",status:"ok",\
+     tcm:"\uc0\u24615 \u24179 \'b7\u29976 \'b7\u24402 \u33086 \u12289 \u32958 \u32463 ",benefit:"\u25239 \u27687 \u21270 \u65292 \u38477 \u33026 \u25252 \u32925 \u65292 \u21547 \u32500 C\u21644 \u21494 \u37240 \u12290 ",\
+     tags:["liver","kidney"],tip:"\uc0\u19981 \u35201 \u29038 \u22826 \u20037 \u65292 \u20445 \u25345 \u33030 \u23273 \u12290 "\},\
+    \{name:"\uc0\u20908 \u29916 ",eng:"Winter Melon",cat:"\u34092 \u33756 ",status:"ok",\
+     tcm:"\uc0\u24615 \u24494 \u23506 \'b7\u29976 \u28129 \'b7\u24402 \u32954 \u12289 \u33152 \u33009 \u32463 ",benefit:"\u21033 \u23615 \u28040 \u32959 \u65292 \u25252 \u32958 \u65292 \u24110 \u21161 \u25490 \u20986 \u32467 \u30707 \u12290 ",\
+     tags:["kidney"],tip:"\uc0\u20908 \u29916 +\u34191 \u31859 \u29038 \u27748 \u65292 \u23545 \u32958 \u32467 \u30707 \u29305 \u21035 \u22909 \u12290 "\},\
+    \{name:"\uc0\u23665 \u33647 ",eng:"Chinese Yam",cat:"\u34092 \u33756 ",status:"ok",\
+     tcm:"\uc0\u24615 \u24179 \'b7\u29976 \'b7\u24402 \u33086 \u12289 \u32954 \u12289 \u32958 \u32463 ",benefit:"\u20581 \u33086 \u20859 \u32963 \u65292 \u34917 \u32958 \u65292 \u20302  GI\u65292 \u24110 \u31283 \u23450 \u34880 \u31958 \u12290 ",\
+     tags:["diabetes","kidney"],tip:"\uc0\u21487 \u20197 \u24403 \u20027 \u39135 \u21507 \u65292 \u33976 \u30528 \u21507 \u26368 \u31616 \u21333 \u12290 "\},\
+    \{name:"\uc0\u21335 \u29916 ",eng:"Pumpkin",cat:"\u34092 \u33756 ",status:"warn",\
+     tcm:"\uc0\u24615 \u28201 \'b7\u29976 \'b7\u24402 \u33086 \u12289 \u32963 \u32463 ",benefit:"\u34917 \u20013 \u30410 \u27668 \u65292 \u21547 \u946 \u32993 \u33821 \u21340 \u32032 \u65292 \u20294 \u31958 \u20998 \u20559 \u39640 \u12290 ",\
+     tags:["diabetes"],tip:"\uc0\u19968 \u27425 \u19981 \u35201 \u36229 \u36807  100g\u65292 \u35201 \u37197 \u40060 /\u34507 /\u35910 \u33104 \u19968 \u36215 \u21507 \u12290 "\},\
+    \{name:"\uc0\u30058 \u33540 ",eng:"Tomato",cat:"\u34092 \u33756 ",status:"ok",\
+     tcm:"\uc0\u24615 \u20937 \'b7\u29976 \u37240 \'b7\u24402 \u32925 \u12289 \u33086 \u32463 ",benefit:"\u28165 \u28909 \u29983 \u27941 \u65292 \u25252 \u32925 \u65292 \u25239 \u27687 \u21270 \u12290 ",\
+     tags:["liver"],tip:"\uc0\u29038 \u27748 \u25110 \u28818 \u34507 \u37117 \u24456 \u22909 \u12290 "\},\
+    \{name:"\uc0\u40644 \u29916 ",eng:"Cucumber",cat:"\u34092 \u33756 ",status:"ok",\
+     tcm:"\uc0\u24615 \u20937 \'b7\u29976 \'b7\u24402 \u33086 \u12289 \u32963 \u32463 ",benefit:"\u28165 \u28909 \u21033 \u23615 \u65292 \u24110 \u21161 \u25511 \u31958 \u21644 \u38477 \u21387 \u12290 ",\
+     tags:["diabetes","kidney"],tip:"\uc0\u20937 \u25292 \u26102 \u21152 \u19968 \u28857 \u37259 \u65292 GI \u26356 \u20302 \u12290 "\},\
+    \{name:"\uc0\u33510 \u29916 ",eng:"Bitter Gourd",cat:"\u34092 \u33756 ",status:"ok",\
+     tcm:"\uc0\u24615 \u23506 \'b7\u33510 \'b7\u24402 \u24515 \u12289 \u33086 \u32463 ",benefit:"\u21547 \u33510 \u29916 \u33527 \u65292 \u24110 \u21161 \u38477 \u20302 \u34880 \u31958 \u12290 ",\
+     tags:["diabetes","liver"],tip:"\uc0\u19968 \u21608 \u21507  2\'963 \u27425 \u65292 \u19981 \u35201 \u22825 \u22825 \u22823 \u37327 \u21507 \u65292 \u24597 \u25289 \u32922 \u23376 \u12290 "\},\
+    \{name:"\uc0\u31179 \u33909 ",eng:"Okra",cat:"\u34092 \u33756 ",status:"ok",\
+     tcm:"\uc0\u24615 \u20937 \'b7\u29976 \'b7\u24402 \u32958 \u12289 \u32963 \u32463 ",benefit:"\u40655 \u28082 \u24110 \u21161 \u24310 \u32531 \u34880 \u31958 \u19978 \u21319 \u65292 \u25252 \u32958 \u12290 ",\
+     tags:["diabetes","kidney"],tip:"\uc0\u27718 \u28907 \u21518 \u25292 \u33437 \u40635 \u27833 \u21644 \u37233 \u27833 \u12290 "\},\
+    // \uc0\u20027 \u39135 \
+    \{name:"\uc0\u29141 \u40614 ",eng:"Oats",cat:"\u20027 \u39135 ",status:"ok",\
+     tcm:"\uc0\u24615 \u24179 \'b7\u29976 \'b7\u24402 \u33086 \u32463 ",benefit:"\u39640 \u32420 \u32500 \u65292 \u38477 \u34880 \u33026 \u65292 \u20302  GI\u65292 \u26159 \u26368 \u25512 \u33616 \u20027 \u39135 \u12290 ",\
+     tags:["diabetes","liver"],tip:"\uc0\u26089 \u39184 \u29038 \u29141 \u40614 \u31909 \u65292 \u21487 \u20197 \u21152 \u19968 \u28857 \u32905 \u26690 \u31881 \u24110 \u21161 \u25511 \u31958 \u12290 "\},\
+    \{name:"\uc0\u31961 \u31859 ",eng:"Brown Rice",cat:"\u20027 \u39135 ",status:"ok",\
+     tcm:"\uc0\u24615 \u24179 \'b7\u29976 \'b7\u24402 \u33086 \u32463 ",benefit:"\u27604 \u30333 \u31859 \u26356 \u26377 \u32420 \u32500 \u65292 \u24110 \u21161 \u31283 \u23450 \u34880 \u31958 \u12290 ",\
+     tags:["diabetes"],tip:"\uc0\u21644 \u30333 \u31859  1:1 \u28151 \u29038 \u65292 \u21475 \u24863 \u26356 \u23481 \u26131 \u25509 \u21463 \u12290 "\},\
+    \{name:"\uc0\u23567 \u31859 ",eng:"Millet",cat:"\u20027 \u39135 ",status:"ok",\
+     tcm:"\uc0\u24615 \u20937 \'b7\u29976 \'b7\u24402 \u33086 \u12289 \u32958 \u32463 ",benefit:"\u20581 \u33086 \u21644 \u32963 \u65292 \u36866 \u21512 \u26202 \u39184 \u20570 \u31909 \u12290 ",\
+     tags:["kidney"],tip:"\uc0\u19981 \u35201 \u29038 \u22826 \u31232 \u65292 \u31264 \u19968 \u28857 \u34880 \u31958 \u19978 \u21319 \u26356 \u24930 \u12290 "\},\
+    \{name:"\uc0\u34191 \u31859 ",eng:"Job's Tears",cat:"\u20027 \u39135 ",status:"ok",\
+     tcm:"\uc0\u24615 \u20937 \'b7\u29976 \u28129 \'b7\u24402 \u33086 \u12289 \u32954 \u32463 ",benefit:"\u21033 \u27700 \u28040 \u32959 \u65292 \u25252 \u32958 \u65292 \u23545 \u33026 \u32938 \u32925 \u20063 \u26377 \u24110 \u21161 \u12290 ",\
+     tags:["kidney","liver"],tip:"\uc0\u21644 \u20908 \u29916 \u19968 \u36215 \u29038 \u27748 \u12290 "\},\
+    \{name:"\uc0\u30333 \u31859 \u39277 ",eng:"White Rice",cat:"\u20027 \u39135 ",status:"warn",\
+     tcm:"\uc0\u24615 \u24179 \'b7\u29976 \'b7\u24402 \u33086 \u32463 ",benefit:"\u33021 \u37327 \u26469 \u28304 \u65292 \u20294  GI \u39640 \u65292 \u23481 \u26131 \u21319 \u34880 \u31958 \u12290 ",\
+     tags:["diabetes"],tip:"\uc0\u27599 \u39184 \u26368 \u22810 \u21322 \u30871 \u65292 \u19968 \u23450 \u35201 \u28151 \u31895 \u31918 \u12290 "\},\
+    // \uc0\u34507 \u30333 \u36136 \
+    \{name:"\uc0\u40072 \u40060 ",eng:"Sea Bass",cat:"\u34507 \u30333 \u36136 ",status:"ok",\
+     tcm:"\uc0\u24615 \u24179 \'b7\u29976 \'b7\u24402 \u32925 \u12289 \u33086 \u32463 ",benefit:"\u20302 \u33026 \u39640 \u34507 \u30333 \u65292 \u25252 \u32925 \u65292 \u36866 \u21512 \u24120 \u21507 \u12290 ",\
+     tags:["liver","kidney"],tip:"\uc0\u23004 \u33905 \u28165 \u33976 \u65292 \u23569 \u30416 \u12290 "\},\
+    \{name:"\uc0\u30333 \u40115 ",eng:"Pomfret",cat:"\u34507 \u30333 \u36136 ",status:"ok",\
+     tcm:"\uc0\u24615 \u24179 \'b7\u29976 \'b7\u24402 \u32963 \u32463 ",benefit:"\u26131 \u28040 \u21270 \u65292 \u19981 \u27833 \u33147 \u65292 \u36866 \u21512 \u38271 \u36744 \u12290 ",\
+     tags:["liver"],tip:"\uc0\u28165 \u33976 \u26368 \u22909 \u12290 "\},\
+    \{name:"\uc0\u35910 \u33104 ",eng:"Tofu",cat:"\u34507 \u30333 \u36136 ",status:"ok",\
+     tcm:"\uc0\u24615 \u20937 \'b7\u29976 \'b7\u24402 \u33086 \u12289 \u32963 \u32463 ",benefit:"\u26893 \u29289 \u34507 \u30333 \u65292 \u20445 \u25252 \u32925 \u33039 \u65292 \u32966 \u22266 \u37255 \u20302 \u12290 ",\
+     tags:["liver","diabetes"],tip:"\uc0\u36866 \u21512 \u20570 \u27748 \u25110 \u28822 \u33756 \u12290 "\},\
+    \{name:"\uc0\u40481 \u34507 ",eng:"Egg",cat:"\u34507 \u30333 \u36136 ",status:"ok",\
+     tcm:"\uc0\u24615 \u24179 \'b7\u29976 \'b7\u24402 \u33086 \u12289 \u32954 \u32463 ",benefit:"\u39640 \u34507 \u30333 \u65292 \u34917 \u27668 \u34880 \u65292 \u20294 \u32966 \u22266 \u37255 \u20559 \u39640 \u12290 ",\
+     tags:["liver"],tip:"\uc0\u19968 \u22825  1 \u20010 \u27809 \u38382 \u39064 \u12290 "\},\
+    // \uc0\u27700 \u26524 \
+    \{name:"\uc0\u29461 \u29492 \u26691 ",eng:"Kiwi",cat:"\u27700 \u26524 ",status:"ok",\
+     tcm:"\uc0\u24615 \u23506 \'b7\u29976 \u37240 \'b7\u24402 \u32963 \u32463 ",benefit:"\u32500 C \u24456 \u39640 \u65292 \u24110 \u21161 \u38081 \u21560 \u25910 \u65292 \u20302  GI\u12290 ",\
+     tags:["diabetes","lung"],tip:"\uc0\u27599 \u22825  1 \u20010 \u26368 \u20339 \u12290 "\},\
+    \{name:"\uc0\u27225 \u23376 ",eng:"Orange",cat:"\u27700 \u26524 ",status:"ok",\
+     tcm:"\uc0\u24615 \u20937 \'b7\u29976 \u37240 \'b7\u24402 \u32954 \u32463 ",benefit:"\u28070 \u32954 \u65292 \u34917 \u32500 C\u12290 ",\
+     tags:["lung"],tip:"\uc0\u23613 \u37327 \u25972 \u20010 \u21507 \u65292 \u19981 \u35201 \u27048 \u27713 \u12290 "\},\
+    \{name:"\uc0\u30058 \u30707 \u27060 ",eng:"Guava",cat:"\u27700 \u26524 ",status:"ok",\
+     tcm:"\uc0\u24615 \u24179 \'b7\u29976 \'b7\u24402 \u32963 \u32463 ",benefit:"\u20302  GI\u65292 \u39640 \u32420 \u32500 \u65292 \u38750 \u24120 \u36866 \u21512 \u25511 \u31958 \u20154 \u32676 \u12290 ",\
+     tags:["diabetes"],tip:"\uc0\u21487 \u20197 \u24403 \u21152 \u39184 \u65292 \u19968 \u27425  1 \u20010 \u12290 "\},\
+    \{name:"\uc0\u27060 \u33714 ",eng:"Durian",cat:"\u27700 \u26524 ",status:"no",\
+     tcm:"\uc0\u24615 \u28909 \'b7\u29976 \'b7\u24402 \u32925 \u12289 \u32954 \u32463 ",benefit:"\u28909 \u37327 \u21644 \u31958 \u37117 \u38750 \u24120 \u39640 \u65292 \u20250 \u21152 \u37325 \u33026 \u32938 \u32925 \u21644 \u34880 \u31958 \u12290 ",\
+     tags:[],tip:"\uc0\u24314 \u35758 \u23436 \u20840 \u19981 \u21507 \u12290 "\}\
+  ];\
+\
+  const cats = ["\uc0\u20840 \u37096 ","\u34092 \u33756 ","\u20027 \u39135 ","\u34507 \u30333 \u36136 ","\u27700 \u26524 "];\
+\
+  // ===== \uc0\u19968 \u21608 \u33756 \u35889 \u65288 \u31616 \u21270 \u29256 \u19968 \u21608 \u65289  =====\
+  const week = [\
+    \{\
+      day:"\uc0\u21608 \u19968 ",\
+      breakfast:["\uc0\u29141 \u40614 \u21335 \u29916 \u31909 \u65288 \u29141 \u40614  60g + \u21335 \u29916  80g\u65289 ","\u27700 \u29038 \u34507  1 \u20010 ","\u33529 \u26524  \u21322 \u20010 "],\
+      lunch:["\uc0\u28165 \u33976 \u40072 \u40060  450g","\u33948 \u28818 \u33756 \u24515  350g","\u20908 \u29916 \u34191 \u31859 \u27748 ","\u31961 \u31859 +\u30333 \u31859  \u21508 \u21322 \u30871 "],\
+      dinner:["\uc0\u30058 \u33540 \u35910 \u33104 \u27748 ","\u20937 \u25292 \u40644 \u29916 \u65288 \u21152 \u37259 \u23569 \u30416 \u65289 ","\u23567 \u31859 \u31909 \u65288 \u31264 \u19968 \u28857 \u65289 "],\
+      tea:"\uc0\u28201 \u22823 \u40614 \u33590  \u25110  \u28201 \u27700 "\
+    \},\
+    \{\
+      day:"\uc0\u21608 \u20108 ",\
+      breakfast:["\uc0\u40657 \u35910 \u23567 \u31859 \u31909 \u65288 \u40657 \u35910  40g + \u23567 \u31859  60g\u65289 ","\u27700 \u29038 \u34507  1 \u20010 "],\
+      lunch:["\uc0\u28165 \u33976 \u40149 \u40060  \u25110  \u30333 \u40115 ","\u28818 \u35199 \u20848 \u33457 \u32993 \u33821 \u21340 ","\u20908 \u29916 \u27748 ","\u26434 \u31918 \u39277 \u65288 \u31961 \u31859 \u20026 \u20027 \u65289 "],\
+      dinner:["\uc0\u23665 \u33647 \u26408 \u32819 \u28818 \u65288 \u23665 \u33647  150g\u65289 ","\u33948 \u28818 \u23567 \u30333 \u33756 ","\u29141 \u40614 \u31909 "],\
+      tea:"\uc0\u29577 \u31859 \u39035 \u27700 \u65288 \u25252 \u32958 \u12289 \u38450 \u32467 \u30707 \u65289 "\
+    \},\
+    \{\
+      day:"\uc0\u21608 \u19977 ",\
+      breakfast:["\uc0\u38134 \u32819 \u30334 \u21512 \u33714 \u23376 \u32697 \u65288 \u19981 \u21152 \u31958 \u65289 ","\u20840 \u40614 \u38754 \u21253  1 \u29255 ","\u29461 \u29492 \u26691  \u21322 \u20010 "],\
+      lunch:["\uc0\u23004 \u33905 \u33976 \u40481 \u33151 \u65288 \u21435 \u30382 \u65289 ","\u33948 \u28818 \u33445 \u34013 ","\u20908 \u29916 \u34191 \u31859 \u25490 \u39592 \u27748 \u65288 \u25735 \u27833 \u65289 ","\u31961 \u31859 \u39277 "],\
+      dinner:["\uc0\u30058 \u33540 \u34507 \u33457 \u27748 ","\u28165 \u28818 \u33716 \u31499  \u25110  \u29983 \u33756 ","\u21335 \u29916 \u23567 \u31859 \u31909 "],\
+      tea:"\uc0\u28129 \u33738 \u33457 \u26552 \u26462 \u33590 \u65288 \u20859 \u32925 \u26126 \u30446 \u65289 "\
+    \},\
+    \{\
+      day:"\uc0\u21608 \u22235 ",\
+      breakfast:["\uc0\u29141 \u40614 \u31909 \u65288 \u21487 \u21152 \u19968 \u28857 \u32905 \u26690 \u31881 \u65289 ","\u27700 \u29038 \u34507  1 \u20010 ","\u30058 \u30707 \u27060  1 \u20010 "],\
+      lunch:["\uc0\u35910 \u33104 \u40060 \u27748 \u65288 \u30333 \u40060 +\u35910 \u33104 \u65289 ","\u33948 \u28818 \u31354 \u24515 \u33756 ","\u26434 \u31918 \u39277 "],\
+      dinner:["\uc0\u23665 \u33647 \u34191 \u31859 \u31909 ","\u20937 \u25292 \u40644 \u29916 \u26408 \u32819 ","\u33976 \u21335 \u29916  100g"],\
+      tea:"\uc0\u28201 \u24320 \u27700  \u25110  \u22823 \u40614 \u33590 "\
+    \},\
+    \{\
+      day:"\uc0\u21608 \u20116 ",\
+      breakfast:["\uc0\u29577 \u31859 \u31909  \u23569 \u37327 ","\u27700 \u29038 \u34507  1 \u20010 ","\u27225 \u23376  \u21322 \u20010 "],\
+      lunch:["\uc0\u28165 \u33976 \u30333 \u40115 ","\u28818 \u35199 \u33899 \u33446  / \u33540 \u23376 \u65288 \u23569 \u27833 \u65289 ","\u33457 \u26928 \u33756 \u32993 \u33821 \u21340 \u27748 ","\u31961 \u31859 \u39277 "],\
+      dinner:["\uc0\u35910 \u33104 \u30333 \u33756 \u29042 ","\u33976 \u33419 \u22836  \u25110  \u32418 \u34223  100g\u65288 \u20195 \u26367 \u20027 \u39135 \u65289 "],\
+      tea:"\uc0\u29577 \u31859 \u39035 +\u20908 \u29916 \u30382  \u27700 "\
+    \},\
+    \{\
+      day:"\uc0\u21608 \u20845 ",\
+      breakfast:["\uc0\u40657 \u35910 \u32418 \u26531 \u31909 \u65288 \u32418 \u26531  3\'964 \u39063 \u21363 \u21487 \u65289 ","\u20840 \u40614 \u38754 \u21253  1 \u29255 "],\
+      lunch:["\uc0\u20908 \u29916 \u34191 \u31859 \u29482 \u33137 \u27748 \u65288 \u25735 \u27833 \u65289 ","\u33948 \u28818 \u33760 \u33756 \u65288 \u28975 \u27700 \u21518 \u20877 \u28818 \u65289 ","\u32418 \u35910 \u31961 \u31859 \u39277 "],\
+      dinner:["\uc0\u35910 \u33104 \u30058 \u33540 \u28822 \u33756 ","\u33948 \u28818 \u33756 \u24515 ","\u29141 \u40614 \u31909 "],\
+      tea:"\uc0\u28129 \u32511 \u33590 \u65288 \u39277 \u21518  1 \u23567 \u26102 \u65289 "\
+    \},\
+    \{\
+      day:"\uc0\u21608 \u26085 ",\
+      breakfast:["\uc0\u21335 \u29916 \u29141 \u40614 \u31909 ","\u27700 \u29038 \u34507  1 \u20010 ","\u26792  \u21322 \u20010 "],\
+      lunch:["\uc0\u28165 \u33976 \u30707 \u26001 \u40060 ","\u33948 \u28818 \u29983 \u33756 ","\u20908 \u29916 \u27748 ","\u31961 \u31859 \u39277 "],\
+      dinner:["\uc0\u23665 \u33647 \u32418 \u26531 \u40481 \u27748 \u65288 \u32418 \u26531 \u23569 \u37327 \u65289 ","\u20937 \u25292 \u26408 \u32819 \u32993 \u33821 \u21340 ","\u23567 \u31859 \u31909 "],\
+      tea:"\uc0\u28201 \u24320 \u27700 "\
+    \}\
+  ];\
+\
+  let currentCat = "\uc0\u20840 \u37096 ";\
+  let currentDay = 0;\
+\
+  // ===== tab \uc0\u20999 \u25442  =====\
+  function showTab(name)\{\
+    ["food","menu","forbid"].forEach(t=>\{\
+      document.getElementById("page-"+t).classList.add("hidden");\
+      document.getElementById("tab-"+t).classList.remove("active");\
+    \});\
+    document.getElementById("page-"+name).classList.remove("hidden");\
+    document.getElementById("tab-"+name).classList.add("active");\
+  \}\
+\
+  // ===== \uc0\u39135 \u26448 \u28210 \u26579  =====\
+  function renderCatChips()\{\
+    const row = document.getElementById("cat-row");\
+    row.innerHTML = "";\
+    cats.forEach(c=>\{\
+      const btn = document.createElement("button");\
+      btn.className = "chip"+(c===currentCat?" active":"");\
+      btn.textContent = c;\
+      btn.onclick = ()=>\{currentCat=c;renderFoods();\};\
+      row.appendChild(btn);\
+    \});\
+  \}\
+\
+  function renderFoods()\{\
+    const list = document.getElementById("food-list");\
+    const q = document.getElementById("search").value.trim();\
+    list.innerHTML = "";\
+    let arr = foods;\
+    if(currentCat!=="\uc0\u20840 \u37096 ")\{\
+      arr = arr.filter(f=>f.cat===currentCat);\
+    \}\
+    if(q)\{\
+      arr = arr.filter(f=>f.name.includes(q) || f.eng.toLowerCase().includes(q.toLowerCase()));\
+    \}\
+    if(!arr.length)\{\
+      list.innerHTML = "<div style='font-size:12px;color:#888;padding:18px 4px;'>\uc0\u25214 \u19981 \u21040 \u36825 \u20010 \u39135 \u26448 \u65292 \u21487 \u20197 \u25442 \u20010 \u21483 \u27861 \u20877 \u35797 \u19968 \u27425 \u12290 </div>";\
+      return;\
+    \}\
+    arr.forEach(f=>\{\
+      const div = document.createElement("div");\
+      div.className = "card "+(f.status||"");\
+      const statusIcon = f.status==="ok"?"\uc0\u9989 ":f.status==="warn"?"\u9888 \u65039 ":"\u10060 ";\
+      const tagsHtml = (f.tags||[]).map(t=>\{\
+        const map=\{diabetes:"\uc0\u25511 \u31958 ",liver:"\u25252 \u32925 ",kidney:"\u25252 \u32958 ",lung:"\u28070 \u32954 "\};\
+        const cls="tag-"+t;\
+        return `<span class="tag $\{cls\}">$\{map[t]||""\}</span>`;\
+      \}).join("");\
+      div.innerHTML = `\
+        <div class="card-title">\
+          <div>\
+            <span class="name">$\{f.name\}</span>\
+            <span class="eng">$\{f.eng\}</span>\
+          </div>\
+          <div class="status">$\{statusIcon\}</div>\
+        </div>\
+        <div class="tcm">$\{f.tcm\}</div>\
+        <div class="detail">\
+          <div>\uc0\u21151 \u25928 \u65306 $\{f.benefit\}</div>\
+          <div class="tags">$\{tagsHtml\}</div>\
+          $\{f.tip?`<div class="note">\uc0\u27880 \u24847 \u65306 $\{f.tip\}</div>`:""\}\
+        </div>\
+      `;\
+      list.appendChild(div);\
+    \});\
+  \}\
+\
+  // ===== \uc0\u19968 \u21608 \u33756 \u35889 \u28210 \u26579  =====\
+  function renderDayTabs()\{\
+    const row = document.getElementById("day-tabs");\
+    row.innerHTML = "";\
+    week.forEach((d,i)=>\{\
+      const btn = document.createElement("button");\
+      btn.className = "day-btn"+(i===currentDay?" active":"");\
+      btn.textContent = d.day;\
+      btn.onclick = ()=>\{currentDay=i;renderDayTabs();renderMeal();\};\
+      row.appendChild(btn);\
+    \});\
+  \}\
+\
+  function renderMeal()\{\
+    const box = document.getElementById("meal-box");\
+    const d = week[currentDay];\
+    const makeCard = (icon,title,lines)=>\{\
+      return `\
+        <div class="meal-card">\
+          <div class="meal-head">$\{icon\} $\{title\}</div>\
+          $\{lines.map(l=>`<div class="meal-line">$\{l\}</div>`).join("")\}\
+        </div>\
+      `;\
+    \};\
+    box.innerHTML =\
+      makeCard("\uc0\u55356 \u57093 ","\u26089 \u39184 ",d.breakfast)+\
+      makeCard("\uc0\u9728 \u65039 ","\u21320 \u39184 ",d.lunch)+\
+      makeCard("\uc0\u55356 \u57113 ","\u26202 \u39184 ",d.dinner)+\
+      makeCard("\uc0\u55356 \u57205 ","\u20170 \u26085 \u33590 \u39278 ",[d.tea])+\
+      `<div class="tip-box">\uc0\u23567 \u25552 \u31034 \u65306 \u21507 \u39277 \u39034 \u24207 \u35760 \u24471 \u26159 \u12300 \u20808 \u27748 \u8594 \u20808 \u33756 \u8594 \u20877 \u32905 \u8594 \u26368 \u21518 \u25165 \u21507 \u39277 \u12301 \u65292 \u36825 \u26679 \u34880 \u31958 \u21319 \u24471 \u27604 \u36739 \u24930 \u12290 </div>`;\
+  \}\
+\
+  // ===== \uc0\u21021 \u22987 \u21270  =====\
+  renderCatChips();\
+  renderFoods();\
+  renderDayTabs();\
+  renderMeal();\
+</script>\
+</body>\
+</html>\
+\
+}
