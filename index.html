@@ -6,86 +6,74 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     *{box-sizing:border-box;margin:0;padding:0;}
-    body{
-      font-family:"PingFang SC","Microsoft YaHei",sans-serif;
-      background:#f5f5f0;
-      color:#222;
-      font-size:18px;
-      line-height:1.8;
-    }
+    body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f5f0;color:#333;}
     .header{background:linear-gradient(135deg,#2d6a4f,#40916c);color:#fff;padding:18px;text-align:center;}
-    .header h1{font-size:24px;margin-bottom:6px;}
-    .header p{font-size:14px;opacity:.95;}
+    .header h1{font-size:20px;margin-bottom:4px;}
+    .header p{font-size:12px;opacity:.9;}
     .badges{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:8px;}
-    .badge{font-size:12px;padding:4px 10px;border-radius:14px;background:rgba(255,255,255,.2);}
+    .badge{font-size:11px;padding:3px 9px;border-radius:14px;background:rgba(255,255,255,.2);}
     .tabs{display:flex;overflow-x:auto;background:#fff;border-bottom:2px solid #e8f5e9;}
-    .tab{
-      flex:1;
-      min-width:90px;
-      padding:12px 8px;
-      text-align:center;
-      font-size:16px;
-      border:none;
-      background:none;
-      cursor:pointer;
-      color:#444;
-    }
+    .tab{flex:1;min-width:80px;padding:10px 6px;text-align:center;font-size:13px;border:none;background:none;cursor:pointer;color:#666;}
     .tab.active{color:#2d6a4f;border-bottom:3px solid #2d6a4f;font-weight:bold;}
-    .content{padding:16px 16px;}
+    .content{padding:12px 14px;}
     .hidden{display:none;}
 
     .search-box{padding:10px 14px;background:#fff;border-bottom:1px solid #eee;}
-    .search-input{width:100%;padding:10px 14px;border:1.5px solid #c8e6c9;border-radius:24px;font-size:16px;}
+    .search-input{width:100%;padding:9px 12px;border:1.5px solid #c8e6c9;border-radius:22px;font-size:14px;}
     .search-input:focus{outline:none;border-color:#40916c;}
 
     .legend{display:flex;gap:10px;margin:8px 0 10px;}
-    .legend-item{font-size:12px;color:#555;display:flex;align-items:center;gap:4px;}
-    .dot{width:10px;height:10px;border-radius:50%;}
+    .legend-item{font-size:11px;color:#555;display:flex;align-items:center;gap:4px;}
+    .dot{width:9px;height:9px;border-radius:50%;}
     .dot-ok{background:#40916c;}
     .dot-warn{background:#f59e0b;}
     .dot-no{background:#ef4444;}
 
     .chip-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;}
-    .chip{border:none;padding:5px 12px;border-radius:18px;font-size:13px;cursor:pointer;background:#e8f5e9;color:#2d6a4f;}
+    .chip{border:none;padding:4px 10px;border-radius:18px;font-size:11px;cursor:pointer;background:#e8f5e9;color:#2d6a4f;}
     .chip.active{background:#2d6a4f;color:#fff;}
 
-    .food-list{display:flex;flex-direction:column;gap:10px;}
-    .card{background:#fff;border-radius:12px;padding:12px 14px;box-shadow:0 1px 4px rgba(0,0,0,.06);border-left:5px solid #ccc;}
+    .food-list{display:flex;flex-direction:column;gap:8px;}
+    .card{background:#fff;border-radius:10px;padding:10px 12px;box-shadow:0 1px 4px rgba(0,0,0,.06);border-left:4px solid #ccc;}
     .card.ok{border-left-color:#40916c;}
     .card.warn{border-left-color:#f59e0b;}
     .card.no{border-left-color:#ef4444;}
     .card-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;}
-    .name{font-size:18px;font-weight:bold;}
-    .eng{font-size:13px;color:#666;margin-left:6px;}
-    .status{font-size:22px;}
-    .tcm{font-size:13px;color:#5a8a6a;background:#f0faf4;padding:4px 9px;border-radius:9px;display:inline-block;margin-bottom:6px;}
-    .detail{font-size:15px;color:#222;line-height:1.9;}
+    .name{font-size:15px;font-weight:bold;}
+    .eng{font-size:11px;color:#888;margin-left:5px;}
+    .status{font-size:18px;}
+    .tcm{font-size:12px;color:#5a8a6a;background:#f0faf4;padding:3px 7px;border-radius:9px;display:inline-block;margin-bottom:4px;}
+    .detail{font-size:12px;color:#444;line-height:1.6;}
     .tags{margin-top:4px;display:flex;gap:4px;flex-wrap:wrap;}
-    .tag{font-size:12px;padding:3px 8px;border-radius:10px;}
+    .tag{font-size:11px;padding:2px 7px;border-radius:10px;}
     .tag-diabetes{background:#fef3c7;color:#92400e;}
     .tag-liver{background:#d1fae5;color:#065f46;}
     .tag-kidney{background:#dbeafe;color:#1e40af;}
     .tag-lung{background:#f3e8ff;color:#5b21b6;}
-    .note{font-size:13px;color:#78350f;background:#fffbeb;border:1px solid #fcd34d;border-radius:6px;padding:6px 10px;margin-top:6px;}
+    .note{font-size:11px;color:#78350f;background:#fffbeb;border:1px solid #fcd34d;border-radius:6px;padding:5px 8px;margin-top:5px;}
 
-    .section-title{font-size:15px;color:#666;margin:8px 0;font-weight:600;}
-    .meal-card{background:#fff;border-radius:10px;padding:12px 14px;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:10px;}
-    .meal-head{font-size:16px;font-weight:bold;color:#2d6a4f;margin-bottom:6px;}
-    .meal-line{font-size:15px;color:#222;border-top:1px dashed #e5e7eb;padding:5px 0;line-height:1.9;}
+    .section-title{font-size:13px;color:#666;margin:6px 0 6px;font-weight:600;}
+    .pill-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;}
+    .pill{padding:6px 10px;border-radius:16px;border:1px solid #cbd5e1;font-size:12px;cursor:pointer;background:#fff;color:#475569;}
+    .pill.active{background:#2d6a4f;color:#fff;border-color:#2d6a4f;}
 
-    .forbid-card{background:#fff;border-radius:12px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,.05);margin-bottom:12px;border-left:5px solid #ef4444;}
-    .forbid-title{font-size:16px;color:#b91c1c;font-weight:bold;margin-bottom:8px;}
-    .forbid-tags{display:flex;flex-wrap:wrap;gap:8px;}
-    .f-tag{background:#fee2e2;color:#991b1b;font-size:14px;padding:5px 11px;border-radius:18px;}
-    .limit-card{background:#fff;border-radius:12px;padding:12px 14px;box-shadow:0 1px 4px rgba(0,0,0,.05);border-left:5px solid #f59e0b;}
-    .limit-title{font-size:16px;color:#92400e;font-weight:bold;margin-bottom:6px;}
-    .limit-line{font-size:15px;color:#222;border-top:1px solid #fef3c7;padding:6px 0;}
-
-    .tip-box{background:#f0fdf4;border-radius:10px;padding:10px 12px;border:1px solid #bbf7d0;font-size:14px;color:#166534;margin-top:10px;}
-    
-    .day-tabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:12px;}
-    .day-btn{flex-shrink:0;padding:8px 14px;border-radius:20px;border:1px solid #cbd5e1;background:#fff;font-size:14px;cursor:pointer;color:#475569;}
+    .day-tabs{display:flex;gap:4px;overflow-x:auto;margin-bottom:10px;}
+    .day-btn{flex-shrink:0;padding:7px 12px;border-radius:18px;border:1px solid #cbd5e1;background:#fff;font-size:12px;cursor:pointer;color:#475569;}
     .day-btn.active{background:#2d6a4f;color:#fff;border-color:#2d6a4f;}
+
+    .meal-card{background:#fff;border-radius:10px;padding:10px 12px;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:8px;}
+    .meal-head{font-size:13px;font-weight:bold;color:#2d6a4f;margin-bottom:4px;}
+    .meal-line{font-size:12px;color:#333;border-top:1px dashed #e5e7eb;padding:3px 0;line-height:1.5;}
+
+    .forbid-card{background:#fff;border-radius:10px;padding:12px 12px;box-shadow:0 1px 4px rgba(0,0,0,.05);margin-bottom:10px;border-left:4px solid #ef4444;}
+    .forbid-title{font-size:14px;color:#b91c1c;font-weight:bold;margin-bottom:6px;}
+    .forbid-tags{display:flex;flex-wrap:wrap;gap:6px;}
+    .f-tag{background:#fee2e2;color:#991b1b;font-size:12px;padding:4px 9px;border-radius:16px;}
+    .limit-card{background:#fff;border-radius:10px;padding:10px 12px;box-shadow:0 1px 4px rgba(0,0,0,.05);border-left:4px solid #f59e0b;}
+    .limit-title{font-size:14px;color:#92400e;font-weight:bold;margin-bottom:4px;}
+    .limit-line{font-size:12px;color:#444;border-top:1px solid #fef3c7;padding:4px 0;}
+
+    .tip-box{background:#f0fdf4;border-radius:10px;padding:9px 10px;border:1px solid #bbf7d0;font-size:12px;color:#166534;margin-top:8px;}
   </style>
 </head>
 <body>
@@ -93,92 +81,304 @@
     <h1>卜晓红饮食小助手</h1>
     <p>控血糖 · 护脂肪肝 · 护肾结石 · 润肺结节</p>
     <div class="badges">
-      <span class="badge">🩸 控糖</span>
-      <span class="badge">🫀 护肝</span>
-      <span class="badge">💧 护肾</span>
-      <span class="badge">🫁 润肺</span>
+      <span class="badge">🩸 预防糖尿病</span>
+      <span class="badge">🫀 护肝降脂</span>
+      <span class="badge">💧 护肾防结石</span>
+      <span class="badge">🫁 润肺结节</span>
     </div>
   </div>
 
   <div class="tabs">
-    <button class="tab active" onclick="showTab('food')" id="tab-food">🥬 食材</button>
-    <button class="tab" onclick="showTab('menu')" id="tab-menu">📅 菜谱</button>
-    <button class="tab" onclick="showTab('forbid')" id="tab-forbid">🚫 禁食</button>
+    <button class="tab active" onclick="showTab('food')" id="tab-food">🥬 食材查询</button>
+    <button class="tab" onclick="showTab('menu')" id="tab-menu">📅 一周菜谱</button>
+    <button class="tab" onclick="showTab('forbid')" id="tab-forbid">🚫 禁食清单</button>
   </div>
 
+  <!-- 食材查询 -->
   <div id="page-food">
-    <div class="search-box"><input class="search-input" id="search" placeholder="搜索食材..." oninput="renderFoods()"></div>
+    <div class="search-box">
+      <input class="search-input" id="search" placeholder="搜索食材，例如：菠菜、小白菜、苦瓜…" oninput="renderFoods()">
+    </div>
     <div class="content">
       <div class="legend">
-        <div class="legend-item"><span class="dot dot-ok"></span>推荐</div>
-        <div class="legend-item"><span class="dot dot-warn"></span>少量</div>
-        <div class="legend-item"><span class="dot dot-no"></span>避免</div>
+        <div class="legend-item"><span class="dot dot-ok"></span>推荐多吃</div>
+        <div class="legend-item"><span class="dot dot-warn"></span>少量即可</div>
+        <div class="legend-item"><span class="dot dot-no"></span>建议避免</div>
       </div>
+
       <div class="chip-row" id="cat-row"></div>
       <div class="food-list" id="food-list"></div>
     </div>
   </div>
 
+  <!-- 一周菜谱 -->
   <div id="page-menu" class="hidden">
     <div class="content">
+      <div class="section-title">本周主题：清淡护肝 + 控糖 + 护肾</div>
+      <div class="tip-box">
+        建议先用这一周做基础调整：<br>
+        • 每餐有粗粮（燕麦/糙米/小米其中一种）<br>
+        • 每天至少一餐有鱼或豆腐<br>
+        • 每天 1500–1800ml 温水
+      </div>
+
       <div class="day-tabs" id="day-tabs"></div>
       <div id="meal-box"></div>
     </div>
   </div>
 
+  <!-- 禁食清单 -->
   <div id="page-forbid" class="hidden">
     <div class="content">
       <div class="forbid-card">
-        <div class="forbid-title">❌ 完全不能吃</div>
+        <div class="forbid-title">❌ 完全不能吃（为肝、肾、血糖好）</div>
         <div class="forbid-tags">
-          <span class="f-tag">甜品饮料</span><span class="f-tag">油炸食物</span><span class="f-tag">腌制加工</span>
-          <span class="f-tag">动物内脏</span><span class="f-tag">辛辣烧烤</span><span class="f-tag">酒类</span>
+          <span class="f-tag">奶茶 / 珍珠</span>
+          <span class="f-tag">汽水 / 果汁饮料</span>
+          <span class="f-tag">蛋糕 / 饼干 / 糖果</span>
+          <span class="f-tag">油条 / 炸鸡 / 薯条</span>
+          <span class="f-tag">香肠 / 腊肉 / 咸鱼</span>
+          <span class="f-tag">猪肝 / 鸡肝 / 内脏</span>
+          <span class="f-tag">辣火锅 / 烧烤</span>
+          <span class="f-tag">啤酒 / 白酒 / 红酒</span>
+          <span class="f-tag">冰淇淋</span>
+          <span class="f-tag">榴莲（糖+热量高）</span>
         </div>
       </div>
+
       <div class="limit-card">
-        <div class="limit-title">⚠️ 严格控制</div>
-        <div class="limit-line">🍚 白米饭：必须混糙米，每餐半碗</div>
-        <div class="limit-line">🎃 南瓜/土豆：当主食吃，不当菜吃</div>
-        <div class="limit-line">🥣 白粥：升糖太快，建议改杂粮粥</div>
+        <div class="limit-title">⚠️ 需要控制分量</div>
+        <div class="limit-line">🍚 白米饭：每餐最多半碗，必须混糙米一起煮</div>
+        <div class="limit-line">🎃 南瓜：一次最多 100g，要配蛋白质（鱼/蛋/豆腐）一起吃</div>
+        <div class="limit-line">🌽 甜玉米：一次最多半根</div>
+        <div class="limit-line">🥕 胡萝卜：熟炒量不要太多</div>
+        <div class="limit-line">🫘 花生：一次最多 10 粒（汤里喝前撇油）</div>
+        <div class="limit-line">☕ 茶/咖啡：不要配餐喝，饭后 1 小时再喝</div>
+        <div class="limit-line">🍇 荔枝、葡萄、芒果：少吃，当成偶尔尝一口</div>
+        <div class="limit-line">🍚 白粥：GI 很高，不建议常喝，改成杂粮粥</div>
+      </div>
+
+      <div class="tip-box">
+        每天小目标：<br>
+        • 喝够温水 1500–1800ml<br>
+        • 蔬菜量 ≥ 主食量<br>
+        • 每天不吃任何甜食 / 油炸 / 酒精
       </div>
     </div>
   </div>
 
 <script>
+  // ===== 数据：食材 =====
   const foods = [
-    {name:"小白菜",eng:"Bok Choy",cat:"蔬菜",status:"ok",tcm:"性凉·甘",benefit:"清热润肠，适合天天吃。",tags:["liver","lung"],tip:"清炒少油。"},
-    {name:"菜心",eng:"Chye Sim",cat:"蔬菜",status:"ok",tcm:"性凉·甘",benefit:"护肝排毒，适合脂肪肝。",tags:["liver"],tip:"大火快炒。"},
-    {name:"苦瓜",eng:"Bitter Gourd",cat:"蔬菜",status:"ok",tcm:"性寒·苦",benefit:"含苦瓜苷，帮助降血糖。",tags:["diabetes","liver"],tip:"一周2-3次。"},
-    {name:"冬瓜",eng:"Winter Melon",cat:"蔬菜",status:"ok",tcm:"性微寒",benefit:"利尿，护肾，防结石。",tags:["kidney"],tip:"冬瓜薏米汤极好。"},
-    {name:"山药",eng:"Yam",cat:"主食",status:"ok",tcm:"性平·甘",benefit:"健脾补肾，辅助控糖。",tags:["diabetes","kidney"],tip:"蒸着代替米饭。"},
-    {name:"燕麦",eng:"Oats",cat:"主食",status:"ok",tcm:"性平·甘",benefit:"高纤维，降脂控糖。",tags:["diabetes","liver"],tip:"早餐首选。"},
-    {name:"黑巧克力",eng:"Dark Chocolate",cat:"零食",status:"warn",tcm:"性微温",benefit:"抗氧化，对护肝有益。",tags:["liver"],tip:"需≥70%可可，每天2块。"}
+    // 蔬菜
+    {name:"小白菜",eng:"Bok Choy",cat:"蔬菜",status:"ok",
+     tcm:"性凉·甘·归肺、胃经",benefit:"清热下火，润肠通便，含钙和维C，适合天天吃。",
+     tags:["liver","lung"],tip:"清炒或汆烫都可以，少油少盐。"},
+    {name:"菜心",eng:"Chye Sim",cat:"蔬菜",status:"ok",
+     tcm:"性凉·甘·归肝、脾经",benefit:"清热解毒，护肝，含叶酸和纤维，对脂肪肝有利。",
+     tags:["liver"],tip:"蒜蓉大火快炒最简单。"},
+    {name:"芥蓝",eng:"Kailan",cat:"蔬菜",status:"ok",
+     tcm:"性凉·甘苦·归肺、胃经",benefit:"清热解毒，含膳食纤维和维C，降脂护血管。",
+     tags:["liver","lung"],tip:"老梗削皮切片，会更嫩。"},
+    {name:"菠菜",eng:"Spinach",cat:"蔬菜",status:"warn",
+     tcm:"性凉·甘·归肝、胃经",benefit:"补铁、通便，但草酸高，肾结石要注意。",
+     tags:["liver","kidney"],tip:"必须先焯水 30 秒再炒或凉拌，减少草酸。"},
+    {name:"空心菜",eng:"Kangkong",cat:"蔬菜",status:"ok",
+     tcm:"性寒·甘·归肠、胃经",benefit:"清热利尿，降脂，适合夏天吃。",
+     tags:["liver","kidney"],tip:"容易出水，快速翻炒即可。"},
+    {name:"西兰花",eng:"Broccoli",cat:"蔬菜",status:"ok",
+     tcm:"性平·甘·归脾、肾经",benefit:"抗氧化，降脂护肝，含维C和叶酸。",
+     tags:["liver","kidney"],tip:"不要煮太久，保持脆嫩。"},
+    {name:"冬瓜",eng:"Winter Melon",cat:"蔬菜",status:"ok",
+     tcm:"性微寒·甘淡·归肺、膀胱经",benefit:"利尿消肿，护肾，帮助排出结石。",
+     tags:["kidney"],tip:"冬瓜+薏米煮汤，对肾结石特别好。"},
+    {name:"山药",eng:"Chinese Yam",cat:"蔬菜",status:"ok",
+     tcm:"性平·甘·归脾、肺、肾经",benefit:"健脾养胃，补肾，低 GI，帮稳定血糖。",
+     tags:["diabetes","kidney"],tip:"可以当主食吃，蒸着吃最简单。"},
+    {name:"南瓜",eng:"Pumpkin",cat:"蔬菜",status:"warn",
+     tcm:"性温·甘·归脾、胃经",benefit:"补中益气，含β胡萝卜素，但糖分偏高。",
+     tags:["diabetes"],tip:"一次不要超过 100g，要配鱼/蛋/豆腐一起吃。"},
+    {name:"番茄",eng:"Tomato",cat:"蔬菜",status:"ok",
+     tcm:"性凉·甘酸·归肝、脾经",benefit:"清热生津，护肝，抗氧化。",
+     tags:["liver"],tip:"煮汤或炒蛋都很好。"},
+    {name:"黄瓜",eng:"Cucumber",cat:"蔬菜",status:"ok",
+     tcm:"性凉·甘·归脾、胃经",benefit:"清热利尿，帮助控糖和降压。",
+     tags:["diabetes","kidney"],tip:"凉拌时加一点醋，GI 更低。"},
+    {name:"苦瓜",eng:"Bitter Gourd",cat:"蔬菜",status:"ok",
+     tcm:"性寒·苦·归心、脾经",benefit:"含苦瓜苷，帮助降低血糖。",
+     tags:["diabetes","liver"],tip:"一周吃 2–3 次，不要天天大量吃，怕拉肚子。"},
+    {name:"秋葵",eng:"Okra",cat:"蔬菜",status:"ok",
+     tcm:"性凉·甘·归肾、胃经",benefit:"黏液帮助延缓血糖上升，护肾。",
+     tags:["diabetes","kidney"],tip:"汆烫后拌芝麻油和酱油。"},
+    // 主食
+    {name:"燕麦",eng:"Oats",cat:"主食",status:"ok",
+     tcm:"性平·甘·归脾经",benefit:"高纤维，降血脂，低 GI，是最推荐主食。",
+     tags:["diabetes","liver"],tip:"早餐煮燕麦粥，可以加一点肉桂粉帮助控糖。"},
+    {name:"糙米",eng:"Brown Rice",cat:"主食",status:"ok",
+     tcm:"性平·甘·归脾经",benefit:"比白米更有纤维，帮助稳定血糖。",
+     tags:["diabetes"],tip:"和白米 1:1 混煮，口感更容易接受。"},
+    {name:"小米",eng:"Millet",cat:"主食",status:"ok",
+     tcm:"性凉·甘·归脾、肾经",benefit:"健脾和胃，适合晚餐做粥。",
+     tags:["kidney"],tip:"不要煮太稀，稠一点血糖上升更慢。"},
+    {name:"薏米",eng:"Job's Tears",cat:"主食",status:"ok",
+     tcm:"性凉·甘淡·归脾、肺经",benefit:"利水消肿，护肾，对脂肪肝也有帮助。",
+     tags:["kidney","liver"],tip:"和冬瓜一起煮汤。"},
+    {name:"白米饭",eng:"White Rice",cat:"主食",status:"warn",
+     tcm:"性平·甘·归脾经",benefit:"能量来源，但 GI 高，容易升血糖。",
+     tags:["diabetes"],tip:"每餐最多半碗，一定要混粗粮。"},
+    // 蛋白质
+    {name:"鲈鱼",eng:"Sea Bass",cat:"蛋白质",status:"ok",
+     tcm:"性平·甘·归肝、脾经",benefit:"低脂高蛋白，护肝，适合常吃。",
+     tags:["liver","kidney"],tip:"姜葱清蒸，少盐。"},
+    {name:"白鲳",eng:"Pomfret",cat:"蛋白质",status:"ok",
+     tcm:"性平·甘·归胃经",benefit:"易消化，不油腻，适合长辈。",
+     tags:["liver"],tip:"清蒸最好。"},
+    {name:"豆腐",eng:"Tofu",cat:"蛋白质",status:"ok",
+     tcm:"性凉·甘·归脾、胃经",benefit:"植物蛋白，保护肝脏，胆固醇低。",
+     tags:["liver","diabetes"],tip:"适合做汤或炖菜。"},
+    {name:"鸡蛋",eng:"Egg",cat:"蛋白质",status:"ok",
+     tcm:"性平·甘·归脾、肺经",benefit:"高蛋白，补气血，但胆固醇偏高。",
+     tags:["liver"],tip:"一天 1 个没问题。"},
+    // 水果
+    {name:"猕猴桃",eng:"Kiwi",cat:"水果",status:"ok",
+     tcm:"性寒·甘酸·归胃经",benefit:"维C 很高，帮助铁吸收，低 GI。",
+     tags:["diabetes","lung"],tip:"每天 1 个最佳。"},
+    {name:"橙子",eng:"Orange",cat:"水果",status:"ok",
+     tcm:"性凉·甘酸·归肺经",benefit:"润肺，补维C。",
+     tags:["lung"],tip:"尽量整个吃，不要榨汁。"},
+    {name:"番石榴",eng:"Guava",cat:"水果",status:"ok",
+     tcm:"性平·甘·归胃经",benefit:"低 GI，高纤维，非常适合控糖人群。",
+     tags:["diabetes"],tip:"可以当加餐，一次 1 个。"},
+    {name:"榴莲",eng:"Durian",cat:"水果",status:"no",
+     tcm:"性热·甘·归肝、肺经",benefit:"热量和糖都非常高，会加重脂肪肝和血糖。",
+     tags:[],tip:"建议完全不吃。"}
   ];
+
+  const cats = ["全部","蔬菜","主食","蛋白质","水果"];
+
+  // ===== 一周菜谱（简化版一周） =====
   const week = [
-    {day:"周一",breakfast:["燕麦粥","蛋","苹果"],lunch:["蒸鱼","炒菜心","冬瓜汤"],dinner:["番茄豆腐","小米粥"]},
-    {day:"周二",breakfast:["小米粥","蛋","梨"],lunch:["蒸三文鱼","西兰花","冬瓜汤"],dinner:["山药木耳","燕麦粥"]}
+    {
+      day:"周一",
+      breakfast:["燕麦南瓜粥（燕麦 60g + 南瓜 80g）","水煮蛋 1 个","苹果 半个"],
+      lunch:["清蒸鲈鱼 450g","蒜炒菜心 350g","冬瓜薏米汤","糙米+白米 各半碗"],
+      dinner:["番茄豆腐汤","凉拌黄瓜（加醋少盐）","小米粥（稠一点）"],
+      tea:"温大麦茶 或 温水"
+    },
+    {
+      day:"周二",
+      breakfast:["黑豆小米粥（黑豆 40g + 小米 60g）","水煮蛋 1 个"],
+      lunch:["清蒸鳕鱼 或 白鲳","炒西兰花胡萝卜","冬瓜汤","杂粮饭（糙米为主）"],
+      dinner:["山药木耳炒（山药 150g）","蒜炒小白菜","燕麦粥"],
+      tea:"玉米须水（护肾、防结石）"
+    },
+    {
+      day:"周三",
+      breakfast:["银耳百合莲子羹（不加糖）","全麦面包 1 片","猕猴桃 半个"],
+      lunch:["姜葱蒸鸡腿（去皮）","蒜炒芥蓝","冬瓜薏米排骨汤（撇油）","糙米饭"],
+      dinner:["番茄蛋花汤","清炒莴笋 或 生菜","南瓜小米粥"],
+      tea:"淡菊花枸杞茶（养肝明目）"
+    },
+    {
+      day:"周四",
+      breakfast:["燕麦粥（可加一点肉桂粉）","水煮蛋 1 个","番石榴 1 个"],
+      lunch:["豆腐鱼汤（白鱼+豆腐）","蒜炒空心菜","杂粮饭"],
+      dinner:["山药薏米粥","凉拌黄瓜木耳","蒸南瓜 100g"],
+      tea:"温开水 或 大麦茶"
+    },
+    {
+      day:"周五",
+      breakfast:["玉米粥 少量","水煮蛋 1 个","橙子 半个"],
+      lunch:["清蒸白鲳","炒西葫芦 / 茄子（少油）","花椰菜胡萝卜汤","糙米饭"],
+      dinner:["豆腐白菜煲","蒸芋头 或 红薯 100g（代替主食）"],
+      tea:"玉米须+冬瓜皮 水"
+    },
+    {
+      day:"周六",
+      breakfast:["黑豆红枣粥（红枣 3–4 颗即可）","全麦面包 1 片"],
+      lunch:["冬瓜薏米猪腱汤（撇油）","蒜炒菠菜（焯水后再炒）","红豆糙米饭"],
+      dinner:["豆腐番茄炖菜","蒜炒菜心","燕麦粥"],
+      tea:"淡绿茶（饭后 1 小时）"
+    },
+    {
+      day:"周日",
+      breakfast:["南瓜燕麦粥","水煮蛋 1 个","梨 半个"],
+      lunch:["清蒸石斑鱼","蒜炒生菜","冬瓜汤","糙米饭"],
+      dinner:["山药红枣鸡汤（红枣少量）","凉拌木耳胡萝卜","小米粥"],
+      tea:"温开水"
+    }
   ];
+
   let currentCat = "全部";
   let currentDay = 0;
-  function showTab(n){
+
+  // ===== tab 切换 =====
+  function showTab(name){
     ["food","menu","forbid"].forEach(t=>{
       document.getElementById("page-"+t).classList.add("hidden");
       document.getElementById("tab-"+t).classList.remove("active");
     });
-    document.getElementById("page-"+n).classList.remove("hidden");
-    document.getElementById("tab-"+n).classList.add("active");
+    document.getElementById("page-"+name).classList.remove("hidden");
+    document.getElementById("tab-"+name).classList.add("active");
   }
+
+  // ===== 食材渲染 =====
+  function renderCatChips(){
+    const row = document.getElementById("cat-row");
+    row.innerHTML = "";
+    cats.forEach(c=>{
+      const btn = document.createElement("button");
+      btn.className = "chip"+(c===currentCat?" active":"");
+      btn.textContent = c;
+      btn.onclick = ()=>{currentCat=c;renderFoods();};
+      row.appendChild(btn);
+    });
+  }
+
   function renderFoods(){
     const list = document.getElementById("food-list");
     const q = document.getElementById("search").value.trim();
     list.innerHTML = "";
-    foods.filter(f=>(currentCat==="全部"||f.cat===currentCat)&&(f.name.includes(q))).forEach(f=>{
+    let arr = foods;
+    if(currentCat!=="全部"){
+      arr = arr.filter(f=>f.cat===currentCat);
+    }
+    if(q){
+      arr = arr.filter(f=>f.name.includes(q) || f.eng.toLowerCase().includes(q.toLowerCase()));
+    }
+    if(!arr.length){
+      list.innerHTML = "<div style='font-size:12px;color:#888;padding:18px 4px;'>找不到这个食材，可以换个叫法再试一次。</div>";
+      return;
+    }
+    arr.forEach(f=>{
       const div = document.createElement("div");
-      div.className = "card "+f.status;
-      div.innerHTML = `<div class="card-title"><b>${f.name}</b><span>${f.status==="ok"?"✅":"⚠️"}</span></div><div class="tcm">${f.tcm}</div><div class="detail">${f.benefit}</div>`;
+      div.className = "card "+(f.status||"");
+      const statusIcon = f.status==="ok"?"✅":f.status==="warn"?"⚠️":"❌";
+      const tagsHtml = (f.tags||[]).map(t=>{
+        const map={diabetes:"控糖",liver:"护肝",kidney:"护肾",lung:"润肺"};
+        const cls="tag-"+t;
+        return `<span class="tag ${cls}">${map[t]||""}</span>`;
+      }).join("");
+      div.innerHTML = `
+        <div class="card-title">
+          <div>
+            <span class="name">${f.name}</span>
+            <span class="eng">${f.eng}</span>
+          </div>
+          <div class="status">${statusIcon}</div>
+        </div>
+        <div class="tcm">${f.tcm}</div>
+        <div class="detail">
+          <div>功效：${f.benefit}</div>
+          <div class="tags">${tagsHtml}</div>
+          ${f.tip?`<div class="note">注意：${f.tip}</div>`:""}
+        </div>
+      `;
       list.appendChild(div);
     });
   }
+
+  // ===== 一周菜谱渲染 =====
   function renderDayTabs(){
     const row = document.getElementById("day-tabs");
     row.innerHTML = "";
@@ -190,12 +390,31 @@
       row.appendChild(btn);
     });
   }
+
   function renderMeal(){
     const box = document.getElementById("meal-box");
     const d = week[currentDay];
-    box.innerHTML = `<div class="meal-card"><b>🌅 早餐</b><br>${d.breakfast.join("<br>")}</div><div class="meal-card"><b>☀️ 午餐</b><br>${d.lunch.join("<br>")}</div><div class="meal-card"><b>🌙 晚餐</b><br>${d.dinner.join("<br>")}</div>`;
+    const makeCard = (icon,title,lines)=>{
+      return `
+        <div class="meal-card">
+          <div class="meal-head">${icon} ${title}</div>
+          ${lines.map(l=>`<div class="meal-line">${l}</div>`).join("")}
+        </div>
+      `;
+    };
+    box.innerHTML =
+      makeCard("🌅","早餐",d.breakfast)+
+      makeCard("☀️","午餐",d.lunch)+
+      makeCard("🌙","晚餐",d.dinner)+
+      makeCard("🍵","今日茶饮",[d.tea])+
+      `<div class="tip-box">小提示：吃饭顺序记得是「先汤→先菜→再肉→最后才吃饭」，这样血糖升得比较慢。</div>`;
   }
-  renderFoods();renderDayTabs();renderMeal();
+
+  // ===== 初始化 =====
+  renderCatChips();
+  renderFoods();
+  renderDayTabs();
+  renderMeal();
 </script>
 </body>
 </html>
