@@ -11,7 +11,7 @@ h1{font-size:28px;text-align:center;padding:20px;background:linear-gradient(135d
 h2{font-size:24px;color:#2d5a3d;margin-bottom:15px}
 h3{font-size:22px;color:#4a7c59;margin:10px 0}
 .tabs{display:flex;background:#2d5a3d;flex-wrap:wrap}
-.tab{flex:1;min-width:80px;padding:14px 8px;text-align:center;color:#a8d5b5;cursor:pointer;font-size:18px;border:none;background:none}
+.tab{flex:1;min-width:70px;padding:12px 6px;text-align:center;color:#a8d5b5;cursor:pointer;font-size:16px;border:none;background:none}
 .tab.active{background:#4a7c59;color:white;font-weight:bold;border-bottom:3px solid #90ee90}
 .page{display:none;padding:20px;max-width:800px;margin:0 auto}
 .page.active{display:block}
@@ -37,6 +37,23 @@ h3{font-size:22px;color:#4a7c59;margin:10px 0}
 .meal{display:flex;align-items:flex-start;margin-bottom:10px;gap:10px}
 .meal-label{background:#4a7c59;color:white;padding:4px 10px;border-radius:8px;font-size:16px;white-space:nowrap;margin-top:2px}
 .meal-content{font-size:19px;line-height:1.5}
+.habit-item{background:white;border-radius:10px;padding:16px;margin-bottom:12px;display:flex;align-items:center;gap:15px;box-shadow:0 2px 6px rgba(0,0,0,0.06);transition:all 0.2s}
+.habit-item:hover{box-shadow:0 3px 10px rgba(0,0,0,0.12)}
+.habit-checkbox{width:28px;height:28px;min-width:28px;cursor:pointer;accent-color:#4a7c59}
+.habit-text{flex:1;font-size:19px;line-height:1.4}
+.habit-time{font-size:16px;color:#777;margin-top:4px}
+.habit-item.checked .habit-text{color:#888;text-decoration:line-through}
+.progress-bar{height:30px;background:#e0e0e0;border-radius:15px;overflow:hidden;margin:15px 0}
+.progress-fill{height:100%;background:linear-gradient(90deg,#4a7c59,#90ee90);transition:width 0.3s;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:16px}
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin:20px 0}
+.stat-card{background:white;border-radius:12px;padding:20px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+.stat-number{font-size:36px;font-weight:bold;color:#4a7c59;margin:10px 0}
+.stat-label{font-size:17px;color:#666}
+.week-calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin:20px 0}
+.day-box{background:white;border-radius:10px;padding:12px 8px;text-align:center;box-shadow:0 2px 4px rgba(0,0,0,0.06)}
+.day-name{font-size:14px;color:#888;margin-bottom:6px}
+.day-progress{font-size:22px;font-weight:bold;color:#4a7c59}
+.day-box.today{background:#e8f5e9;border:2px solid #4a7c59}
 .voice-btn{position:fixed;bottom:30px;right:20px;width:65px;height:65px;border-radius:50%;background:linear-gradient(135deg,#4a7c59,#2d5a3d);color:white;border:none;font-size:28px;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.3);z-index:1000;display:flex;align-items:center;justify-content:center}
 .voice-btn.listening{background:linear-gradient(135deg,#e74c3c,#c0392b);animation:pulse 1s infinite}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
@@ -52,7 +69,7 @@ h3{font-size:22px;color:#4a7c59;margin:10px 0}
 .forbidden-item .reason{font-size:15px;color:#888;margin-top:4px}
 .result-area{min-height:60px}
 .highlight{background:#fff9c4;padding:2px 6px;border-radius:4px}
-@media(max-width:480px){h1{font-size:24px}.tab{font-size:16px;padding:12px 4px}body{font-size:18px}h2{font-size:21px}}
+@media(max-width:480px){h1{font-size:24px}.tab{font-size:15px;padding:12px 4px}body{font-size:18px}h2{font-size:21px}}
 </style>
 </head>
 <body>
@@ -61,6 +78,7 @@ h3{font-size:22px;color:#4a7c59;margin:10px 0}
 <button class="tab active" onclick="showPage('search')">🔍 食材查询</button>
 <button class="tab" onclick="showPage('menu')">📅 本周菜谱</button>
 <button class="tab" onclick="showPage('jiangsu')">🥘 江苏家常菜</button>
+<button class="tab" onclick="showPage('checkin')">✅ 每日打卡</button>
 <button class="tab" onclick="showPage('forbidden')">⚠️ 禁食清单</button>
 </div>
 
@@ -81,7 +99,7 @@ h3{font-size:22px;color:#4a7c59;margin:10px 0}
 <!-- MENU PAGE -->
 <div id="page-menu" class="page">
 <h2>📅 本周健康菜谱</h2>
-<p style="color:#555;margin-bottom:15px;font-size:18px">根据您的身体情况（血糖偏高、脂肪肝、肾结石）定制族江苏家常菜</p>
+<p style="color:#555;margin-bottom:15px;font-size:18px">根据您的身体情况（血糖偏高、脂肪肝、肾结石）定制的江苏家常菜</p>
 <div id="menuContent"></div>
 </div>
 
@@ -90,6 +108,30 @@ h3{font-size:22px;color:#4a7c59;margin:10px 0}
 <h2>🥘 健康江苏家常菜</h2>
 <p style="color:#555;margin-bottom:15px;font-size:18px">适合您的体质，清淡少油，公积里购物可常购外卖</p>
 <div id="jiangsuContent"></div>
+</div>
+
+<!-- CHECKIN PAGE -->
+<div id="page-checkin" class="page">
+<h2>✅ 今日健康打卡</h2>
+<p style="color:#555;margin-bottom:15px;font-size:18px" id="checkDate"></p>
+<div class="progress-bar">
+<div class="progress-fill" id="todayProgress">0%</div>
+</div>
+<div id="habitList"></div>
+<h3 style="margin-top:25px">📊 本周进度</h3>
+<div class="stats-grid">
+<div class="stat-card">
+<div class="stat-label">本周完成</div>
+<div class="stat-number" id="weekComplete">0</div>
+<div class="stat-label">次</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">连续打卡</div>
+<div class="stat-number" id="streakDays">0</div>
+<div class="stat-label">天</div>
+</div>
+</div>
+<div class="week-calendar" id="weekCalendar"></div>
 </div>
 
 <!-- FORBIDDEN PAGE -->
@@ -120,10 +162,10 @@ h3{font-size:22px;color:#4a7c59;margin:10px 0}
 <script>
 // FOOD DATABASE
 const foods = {
-'苦瓜':{cat:'good',tcm:'清热降火',tags:['降血糖','清肝热'],notes:'建议用清烒或凉拌'},
-'冬瓜':{cat:'good',tcm:'利尿消肿',tags:['清热','减脂'],notes:'清烒、炒蔬菜都好'},
+'苦瓜':{cat:'good',tcm:'清热降火',tags:['降血糖','清肝热'],notes:'建议用清炒或凉拌'},
+'冬瓜':{cat:'good',tcm:'利尿消肿',tags:['清热','减脂'],notes:'清炒、炒蔬菜都好'},
 '西红柿':{cat:'good',tcm:'健脾生津',tags:['富含纤维','低糖'],notes:'生吃或作点炒蔬菜'},
-'黄瓜':{cat:'good',tcm:'清热利尿',tags:['低热量','清淡'],notes:'凉拌或清烒'},
+'黄瓜':{cat:'good',tcm:'清热利尿',tags:['低热量','清淡'],notes:'凉拌或清炒'},
 '绿豆芽':{cat:'good',tcm:'清热解毒',tags:['高纤维','低脂'],notes:'清炒、凉拌'},
 '菠菜':{cat:'good',tcm:'补血润燥',tags:['高铁','高纤维'],notes:'清炒或做汤'},
 '白菜':{cat:'good',tcm:'健脾润肠',tags:['富维C','清肝胃'],notes:'清炒、做汤'},
@@ -139,19 +181,38 @@ const foods = {
 '鱼':{cat:'good',tcm:'健脾补脑',tags:['高蛋白','清淡'],notes:'清蒸、烧烤'},
 '豆腐':{cat:'good',tcm:'清热补钙',tags:['植物蛋白','低脂'],notes:'红烧、凉拌'},
 '燕麦':{cat:'good',tcm:'健脾益气',tags:['高纤维','降血糖'],notes:'粥、烘焙食品'},
-'玉米':{cat:'caution',tcm:'健脾利水',tags:['适量即可','高淀粉'],notes:'煎煮食用,不要多吃'},
-'南瓜':{cat:'caution',tcm:'补中益气',tags:['千糖高','适量'],notes:'蒸炒食用,量不多'},
+'玉米':{cat:'caution',tcm:'健脾利水',tags:['适量即可','高淀粉'],notes:'蒸煮食用,不要多吃'},
+'南瓜':{cat:'caution',tcm:'补中益气',tags:['糖分高','适量'],notes:'蒸炒食用,量不多'},
 '红薯':{cat:'caution',tcm:'补虚健脾',tags:['高淀粉','适量'],notes:'蒸熟代替主食'},
 '土豆':{cat:'caution',tcm:'和胃健脾',tags:['淀粉高','限量'],notes:'蒸炒,不要炸'},
 '萝卜':{cat:'caution',tcm:'消食化痰',tags:['适量即可'],notes:'炒蔬菜、做汤'},
 '胡萝卜':{cat:'caution',tcm:'明目健脾',tags:['适量即可'],notes:'炒蔬菜、做汤'}
 };
 
+// HEALTH HABITS DATA - based on TCM lifestyle guidelines
+const habits = [
+{id:'h1',cat:'🍳 饮食习惯',name:'定时吹餐',detail:'早餐 7:00-8:00 | 午餐 11:30-12:30 | 晚餐 17:30-18:30'},
+{id:'h2',cat:'🍳 饮食习惯',name:'细嚐慢咋',detail:'每口咋20-30次，不要进食太快'},
+{id:'h3',cat:'🍳 饮食习惯',name:'吃到八分饱即可',detail:'不要吃太多，降低胃负担'},
+{id:'h4',cat:'🍳 饮食习惯',name:'不吃寵夕，晚餐要清淡',detail:'晚餐小碗粗粮＋蔬菜为主'},
+{id:'h5',cat:'💧 喂水习惯',name:'关起喂足水分 1500-2000ml',detail:'早起先噬一杯温开水，小口多次喜'},
+{id:'h6',cat:'💧 喂水习惯',name:'不喝糖饮料和果汁',detail:'籽字糖增血糖快'},
+{id:'h7',cat:'🦶 运动习惯',name:'每天散步 30分钟',detail:'饥餐后30分钟开始散步'},
+{id:'h8',cat:'🦶 运动习惯',name:'饥吴后散步 15分钟',detail:'进食后不要立刻坐下或啶觉'},
+{id:'h9',cat:'🦶 运动习惯',name:'身体活动收居鱿延申',detail:'拉伸、正常活动 30分钟以上'},
+{id:'h10',cat:'🛌 作息习惯',name:'晚上 22:30 前入睡',detail:'不熟夜，古人说子时 (23:00) 前入睡为佳'},
+{id:'h11',cat:'🛌 作息习惯',name:'早上 6:00-7:00 起床',detail:'影应自然作息规律'},
+{id:'h12',cat:'🛌 作息习惯',name:'午休小憩 15-30 分钟',detail:'中午列啸回气力，套单为佳'},
+{id:'h13',cat:'🥥 健康监测',name:'小心测怀糖指标',detail:'定期测翅始血糖，记录数据'},
+{id:'h14',cat:'🥥 健康监测',name:'保持体重在 62kg 左右',detail:'每周称一次体重，并记录'},
+{id:'h15',cat:'🥥 健康监测',name:'每天少吃娀鸟宜鳖应八至十卡',detail:'勿吃高升糖食物'}
+];
+
 const forbidden = [
-{name:'白糟',reason:'高糖高升糖指数'},
+{name:'白糖',reason:'高糖高升糖指数'},
 {name:'甜食',reason:'高糖高热量'},
 {name:'油炸食物',reason:'加重脂肪肝'},
-{name:'过咸食物',reason:'加重肾负担'},
+{name:'过和食物',reason:'加重肾负担'},
 {name:'高脂肪肉类',reason:'加重脂肪肝'},
 {name:'内脏',reason:'高胆固醇'},
 {name:'高草酸蔬菜',reason:'加重肾结石'},
@@ -165,10 +226,10 @@ const forbidden = [
 // WEEKLY MENU
 const weekMenu = [
 {day:'周一',breakfast:'燕麦粥+水煮蛋+凉拌黄瓜',lunch:'清蒸鱼+香菇白菜+糙米饭',dinner:'冬瓜豆腐汤+清炒小白菜+半碗饭'},
-{day:'周二',breakfast:'豆浆+全麦面包+凉拌木耳',lunch:'白炁鸡胸肉+西红柿烒蔬菜+半碗饭',dinner:'紫菜蛋花汤+苦瓜炒蛋+糙米饭'},
-{day:'周三',breakfast:'小米粥+蔬菜包子+白煡蛋',lunch:'清蒸狮子头+西兰花蔬菜+半碗饭',dinner:'冬瓜排骨汤+清炒娃娃菜+糙米饭'},
+{day:'周二',breakfast:'豆浆+全麦面包+凉拌木耳',lunch:'白炁鸡胸肉+西红柿炒蔬菜+半碗饭',dinner:'紫菜蛋花汤+苦瓜炒蛋+糙米饭'},
+{day:'周三',breakfast:'小米粥+蔬菜包子+白煮蛋',lunch:'清蒸狮子头+西兰花蔬菜+半碗饭',dinner:'冬瓜排骨汤+清炒娃娃菜+糙米饭'},
 {day:'周四',breakfast:'糙米粥+水煮蛋+凉拌黄瓜',lunch:'清蒸鱼+香菇烧小白菜+糙米饭',dinner:'菠菜豆腐汤+蔬菜炒香菇+半碗饭'},
-{day:'周五',breakfast:'豆浆+全麦馀头+凉拌黄瓜',lunch:'白灰鸡丝+西红柿烒蛋+半碗饭',dinner:'海带排骨汤+芦笋炒蔬菜+糙米饭'},
+{day:'周五',breakfast:'豆浆+全麦馒头+凉拌黄瓜',lunch:'白炁鸡丝+西红柿炒蛋+半碗饭',dinner:'海带排骨汤+芦笋炒蔬菜+糙米饭'},
 {day:'周六',breakfast:'燕麦粥+蔬菜包子+水煮蛋',lunch:'清蒸鱼+香菇炒白菜+糙米饭',dinner:'冬瓜豆腐汤+清炒小白菜+半碗饭'},
 {day:'周日',breakfast:'小米粥+全麦面包+凉拌黄瓜',lunch:'清蒸狮子头+西兰花蔬菜+半碗饭',dinner:'紫菜蛋花汤+苦瓜炒蛋+糙米饭'}
 ];
@@ -176,136 +237,191 @@ const weekMenu = [
 // JIANGSU RECIPES
 const jiangsuRecipes = [
 {name:'清蒸狮子头',desc:'江苏名菜，肉丸软糯，清蒸少油，适合血糖管理',ingr:'瘦肉、马蹄、姜葱、生抽',method:'肉糖加马蹄打水上劲，清蒸或水煮，配菜心汤底'},
-{name:'清蒸鲜鱼',desc:'鱼肉鲜嫩，低脂高蛋白，清蒸保持营养',ingr:'鲜鱼(鲸鱼、鲈鱼)、姜葱、蒸鱼豉油',method:'鱼洗净划刀，放姜片，蒸８分钟，浇蒸鱼豉油'},
-{name:'香菇油菜心',desc:'清淡爽口，香菇提鲜，高纤维低热量',ingr:'香菇、小白菜/娃娃菜、蠱油、姜',method:'香菇用水焚软，菜心焦水，勾蘱汁浇汁'},
-{name:'白灰鸡丝',desc:'鸡胸肉低脂，清淡健康，适合脂肪肝',ingr:'鸡胸肉、黄瓜、胡萝卜、姜',method:'鸡胸肉煮熟撑丝，配黄瓜丝，凉拌即可'},
-{name:'冬瓜排骨汤',desc:'清热利尿，清淡不油腻，适合肾结石',ingr:'冬瓜、排骨、姜片',method:'排骨焚水去血水，加冬瓜烧熟，少盐'},
+{name:'清蒸鲜鱼',desc:'鱼肉鲜嫩，低脂高蛋白，清蒸保持营养',ingr:'鲜鱼（鲸鱼、鲈鱼）、姜葱、蒸鱼豉油',method:'鱼洗净划刀，放姜片，蒸八分钟，浇蒸鱼豉油'},
+{name:'香菇油菜心',desc:'清淡爽口，香菇提鲜，高纤维低热量',ingr:'香菇、小白菜、虑油、姜',method:'香菇用水焚软，菜心焦水，勾蘱汁浆即可'},
+{name:'白炁鸡丝',desc:'鸡胸肉低脂，清淡健康，适合脂肪肝',ingr:'鸡胸肉、黄瓜、胡萝卜、姜',method:'鸡胸肉煮熟撑丝，配黄瓜丝，凉拌即可'},
+{name:'冬瓜排骨汤',desc:'清热利尿，清淡不油腻，适合肾结石',ingr:'冬瓜、排骨、姜片',method:'排骨焚水去血水，加冬瓜煮熟，少盐'},
 {name:'苦瓜炒蛋',desc:'苦瓜降血糖，清肝明目，清热去火',ingr:'苦瓜、鸡蛋、蔬油、盐',method:'苦瓜切片焚水去苦，热油炒散蛋液，加苦瓜翻炒'},
 {name:'菠菜豆腐汤',desc:'补钙补铁，清淡营养，适合老人',ingr:'菠菜、嫩豆腐、盐',method:'水开后放豆腐片，加菠菜煮2分钟即可'}
 ];
 
+// UTILS
+function getTodayKey(){return new Date().toISOString().split('T')[0];}
+function getWeekKey(d){const t=new Date(d);t.setHours(0,0,0,0);t.setDate(t.getDate()-t.getDay());return t.toISOString().split('T')[0];}
+function getTodayLabel(){const d=new Date();const days=['日','一','二','三','四','五','六'];return `${d.getMonth()+1}月${d.getDate()}日 星期${days[d.getDay()]}`;}
+
+// CHECKIN FUNCTIONS
+function loadCheckins(){return JSON.parse(localStorage.getItem('checkins')||'{}');}
+function saveCheckins(data){localStorage.setItem('checkins',JSON.stringify(data));}
+
+function renderHabits(){
+const today=getTodayKey();
+const data=loadCheckins();
+const todayData=data[today]||{};
+const hl=document.getElementById('habitList');
+const checkDate=document.getElementById('checkDate');
+if(checkDate)checkDate.textContent=getTodayLabel();
+const cats=[...new Set(habits.map(h=>h.cat))];
+let html='';
+cats.forEach(cat=>{
+html+=`<h3 style="margin:18px 0 10px">${cat}</h3>`;
+habits.filter(h=>h.cat===cat).forEach(h=>{
+const checked=!!todayData[h.id];
+html+=`<div class="habit-item${checked?' checked':''}" id="habit-${h.id}">
+<input type="checkbox" class="habit-checkbox" ${checked?'checked':''} onchange="toggleHabit('${h.id}',this.checked)">
+<div class="habit-text">
+<div>${h.name}</div>
+<div class="habit-time">${h.detail}</div>
+</div>
+</div>`;
+});
+});
+if(hl)hl.innerHTML=html;
+updateProgress();
+}
+
+function toggleHabit(id,checked){
+const today=getTodayKey();
+const data=loadCheckins();
+if(!data[today])data[today]={};
+if(checked)data[today][id]=true;
+else delete data[today][id];
+saveCheckins(data);
+// update item style
+const item=document.getElementById('habit-'+id);
+if(item){if(checked)item.classList.add('checked');else item.classList.remove('checked');}
+updateProgress();
+updateWeekStats();
+}
+
+function updateProgress(){
+const today=getTodayKey();
+const data=loadCheckins();
+const todayData=data[today]||{};
+const total=habits.length;
+const done=Object.keys(todayData).length;
+const pct=total>0?Math.round(done/total*100):0;
+const bar=document.getElementById('todayProgress');
+if(bar){bar.style.width=pct+'%';bar.textContent=pct+'% ('+done+'/'+total+')';}
+}
+
+function updateWeekStats(){
+const data=loadCheckins();
+const today=new Date();
+const days=['日','一','二','三','四','五','六'];
+const cal=document.getElementById('weekCalendar');
+let weekTotal=0;
+let streak=0;
+let html='';
+for(let i=6;i>=0;i--){
+const d=new Date(today);
+d.setDate(today.getDate()-i);
+const key=d.toISOString().split('T')[0];
+const dayData=data[key]||{};
+const done=Object.keys(dayData).length;
+const total=habits.length;
+const pct=total>0?Math.round(done/total*100):0;
+const isToday=(i===0);
+if(done>0)weekTotal+=done;
+html+=`<div class="day-box${isToday?' today':''}">
+<div class="day-name">${days[d.getDay()]}</div>
+<div class="day-progress">${pct>0?pct+'%':'--'}</div>
+<div style="font-size:13px;color:#aaa">${d.getMonth()+1}/${d.getDate()}</div>
+</div>`;
+}
+// streak calculation
+for(let i=0;i<=30;i++){
+const d=new Date(today);
+d.setDate(today.getDate()-i);
+const key=d.toISOString().split('T')[0];
+const done=Object.keys(data[key]||{}).length;
+if(done>0)streak++;else break;
+}
+if(cal)cal.innerHTML=html;
+const wc=document.getElementById('weekComplete');
+if(wc)wc.textContent=weekTotal;
+const sd=document.getElementById('streakDays');
+if(sd)sd.textContent=streak;
+}
+
 // INIT
-window.onload = function(){
+window.onload=function(){
 renderFoodGrids();
 renderMenu();
 renderJiangsu();
 renderForbidden();
+renderHabits();
+updateWeekStats();
 };
 
-function showPage(pageId){
+function showPage(id){
 document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
 document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-document.getElementById('page-'+pageId).classList.add('active');
+document.getElementById('page-'+id).classList.add('active');
 event.target.classList.add('active');
+if(id==='checkin'){renderHabits();updateWeekStats();}
 }
 
 function searchFood(){
-const q = document.getElementById('searchInput').value.trim();
-const r = document.getElementById('searchResult');
+const q=document.getElementById('searchInput').value.trim();
+const r=document.getElementById('searchResult');
 if(!q){r.innerHTML='';return;}
-const f = foods[q];
+const f=foods[q];
 if(f){
-let tc = f.cat==='good'?'good':'neutral';
-let html = `<div class="card">
-<h3>${q}</h3>
-<div class="section-label">TCM 功效：${f.tcm}</div>
-<div>${f.tags.map(t=>`<span class="tag ${tc}">${t}</span>`).join('')}</div>
-<div class="section-label" style="margin-top:10px">建议：${f.notes}</div>
-</div>`;
-r.innerHTML=html;
+let tc=f.cat==='good'?'good':'neutral';
+r.innerHTML=`<div class="card"><h3>${q}</h3><div class="section-label">TCM功效：${f.tcm}</div><div>${f.tags.map(t=>`<span class="tag ${tc}">${t}</span>`).join('')}</div><div class="section-label" style="margin-top:10px">建议：${f.notes}</div></div>`;
 }else{
-r.innerHTML=`<div class="card warn">未找到 "${q}" ，请尝试其他名称或点击下方推荐食材</div>`;
+r.innerHTML=`<div class="card warn">未找到“${q}”，请尝试其他名称或点击下方推荐食材</div>`;
 }
 }
 
 function renderFoodGrids(){
-const gGrid = document.getElementById('goodGrid');
-const cGrid = document.getElementById('cautionGrid');
-const goodFoods = Object.keys(foods).filter(k=>foods[k].cat==='good');
-const cautionFoods = Object.keys(foods).filter(k=>foods[k].cat==='caution');
-gGrid.innerHTML = goodFoods.map(f=>`<div class="food-item" onclick="quickSearch('${f}')">${f}</div>`).join('');
-cGrid.innerHTML = cautionFoods.map(f=>`<div class="food-item" onclick="quickSearch('${f}')">${f}</div>`).join('');
+const gG=document.getElementById('goodGrid');
+const cG=document.getElementById('cautionGrid');
+gG.innerHTML=Object.keys(foods).filter(k=>foods[k].cat==='good').map(f=>`<div class="food-item" onclick="quickSearch('${f}')">${f}</div>`).join('');
+cG.innerHTML=Object.keys(foods).filter(k=>foods[k].cat==='caution').map(f=>`<div class="food-item" onclick="quickSearch('${f}')">${f}</div>`).join('');
 }
 
-function quickSearch(name){
-document.getElementById('searchInput').value=name;
-searchFood();
-}
+function quickSearch(n){document.getElementById('searchInput').value=n;searchFood();}
 
 function renderMenu(){
-const mc = document.getElementById('menuContent');
-mc.innerHTML = weekMenu.map(d=>`
-<div class="menu-day">
-<h3>${d.day}</h3>
-<div class="meal"><div class="meal-label">早餐</div><div class="meal-content">${d.breakfast}</div></div>
-<div class="meal"><div class="meal-label">午餐</div><div class="meal-content">${d.lunch}</div></div>
-<div class="meal"><div class="meal-label">晚餐</div><div class="meal-content">${d.dinner}</div></div>
-</div>
-`).join('');
+document.getElementById('menuContent').innerHTML=weekMenu.map(d=>`<div class="menu-day"><h3>${d.day}</h3><div class="meal"><div class="meal-label">早餐</div><div class="meal-content">${d.breakfast}</div></div><div class="meal"><div class="meal-label">午餐</div><div class="meal-content">${d.lunch}</div></div><div class="meal"><div class="meal-label">晚餐</div><div class="meal-content">${d.dinner}</div></div></div>`).join('');
 }
 
 function renderJiangsu(){
-const jc = document.getElementById('jiangsuContent');
-jc.innerHTML = jiangsuRecipes.map(r=>`
-<div class="card">
-<h3>${r.name}</h3>
-<div style="color:#555;margin:8px 0;line-height:1.6">${r.desc}</div>
-<div class="section-label">食材：</div>
-<div style="margin-bottom:8px">${r.ingr}</div>
-<div class="section-label">做法：</div>
-<div style="line-height:1.6">${r.method}</div>
-</div>
-`).join('');
+document.getElementById('jiangsuContent').innerHTML=jiangsuRecipes.map(r=>`<div class="card"><h3>${r.name}</h3><div style="color:#555;margin:8px 0;line-height:1.6">${r.desc}</div><div class="section-label">食材：</div><div style="margin-bottom:8px">${r.ingr}</div><div class="section-label">做法：</div><div style="line-height:1.6">${r.method}</div></div>`).join('');
 }
 
 function renderForbidden(){
-const fc = document.getElementById('forbiddenContent');
-fc.innerHTML = `<div class="forbidden-list">${forbidden.map(f=>`
-<div class="forbidden-item">
-<div>${f.name}</div>
-<div class="reason">${f.reason}</div>
-</div>
-`).join('')}</div>`;
+document.getElementById('forbiddenContent').innerHTML=`<div class="forbidden-list">${forbidden.map(f=>`<div class="forbidden-item"><div>${f.name}</div><div class="reason">${f.reason}</div></div>`).join('')}</div>`;
 }
 
-function toggleVoice(){
-document.getElementById('voiceModal').classList.add('open');
-}
-
-function closeVoice(){
-document.getElementById('voiceModal').classList.remove('open');
-}
+function toggleVoice(){document.getElementById('voiceModal').classList.add('open');}
+function closeVoice(){document.getElementById('voiceModal').classList.remove('open');}
 
 function askVoice(){
-const inp = document.getElementById('chatInput');
-const q = inp.value.trim();
+const inp=document.getElementById('chatInput');
+const q=inp.value.trim();
 if(!q)return;
-const hist = document.getElementById('chatHistory');
-hist.innerHTML += `<div class="chat-bubble" style="background:#e3f2fd">您：${q}</div>`;
-let ans = getVoiceAnswer(q);
-hist.innerHTML += `<div class="chat-bubble">小绱：${ans}</div>`;
-inp.value = '';
-hist.scrollTop = hist.scrollHeight;
+const hist=document.getElementById('chatHistory');
+hist.innerHTML+=`<div class="chat-bubble" style="background:#e3f2fd">您：${q}</div>`;
+let ans=getAnswer(q);
+hist.innerHTML+=`<div class="chat-bubble">小绱：${ans}</div>`;
+inp.value='';
+hist.scrollTop=hist.scrollHeight;
 }
 
-function getVoiceAnswer(q){
+function getAnswer(q){
 q=q.toLowerCase();
-for(let name in foods){
-if(q.includes(name)){
-const f = foods[name];
-if(f.cat==='good')return `${name}很适合您！${f.tcm}，${f.notes}`;
-else return `${name}可以吃，但${f.notes}`;
-}
-}
-for(let item of forbidden){
-if(q.includes(item.name))return `${item.name}建议少吃或不吃，因为${item.reason}`;
-}
-if(q.includes('血糖'))return '建议选择低升糖指数食物，如苦瓜、燕麦、鸡胸肉、鱼类。';
+for(let n in foods)if(q.includes(n)){const f=foods[n];return f.cat==='good'?`${n}很适合您！${f.tcm}，${f.notes}`:`${n}可以吃，但${f.notes}`;}
+for(let it of forbidden)if(q.includes(it.name))return `${it.name}建议少吃或不吃，因为${it.reason}`;
+if(q.includes('打卡'))return '每天健康打卡，就在“每日打卡”页面完成打卡就好！';
+if(q.includes('血糖'))return '建议选择低升糖食物，如苦瓜、燕麦、鸡胸肉。';
 if(q.includes('脂肪肝'))return '请少油少盐，多吃蔬菜、鱼类、豆腐等清淡食物。';
-if(q.includes('肾结石'))return '避免高草酸食物如菠菜根，多吃冬瓜、黄瓜等利尿食物。';
-if(q.includes('菜谱'))return '请查看本周菜谱页面，我为您准备了七天健康菜谱！';
-if(q.includes('江苏'))return '江苏家常菜页面有狮子头、清蒸鱼等健康做法，快去看看！';
-return '抱歉，我还在学习中。请问我具体食材名称或查看其他页面。';
+if(q.includes('肾结石'))return '避免高草酸食物，多吃冬瓜、黄瓜等利尿食物。';
+if(q.includes('菜谱'))return '本周菜谱在“本周菜谱”页面，有七天健康菜单！';
+if(q.includes('江苏'))return '江苏家常菜页面有狮子头、清蒸鱼等健康做法！';
+return '抱歉，请询具体食材名称或查看其他页面。';
 }
 </script>
 </body>
